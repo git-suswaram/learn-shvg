@@ -25,8 +25,10 @@ public class ZResearchApplication {
         ConfigurableApplicationContext ctx = SpringApplication.run(ZResearchApplication.class, args);
 
         /*To print list of all beans available in applicationContext-ctx
+
         for (String beanNames : ctx.getBeanDefinitionNames()) {
             logger.info("\nBeans in applicationContext: {} ", beanNames);
+
         }
         */
 
