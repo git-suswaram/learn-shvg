@@ -1,0 +1,33 @@
+logging   :
+  file : C:\\temp\\intelliJ_logs\\spring-rest-api.log
+  level:
+    com : INFO
+    org :
+      springframework: INFO
+    root: INFO
+
+spring    :
+  jackson    :
+    serialization:
+      write-dates-as-timestamps: FALSE
+  profiles   :
+    active : ${profile:local}
+    include: $(ENV_NAME:local}
+  application:
+    name: spring-rest-api
+  output     :
+    ansi:
+      enabled: always
+
+management:
+  security :
+    enabled: FLASE
+  endpoints:
+    default:
+      enabled: TRUE
+    web    :
+      exposure:
+        include: "*"
+        exclude:
+      basePath: "/"
+
