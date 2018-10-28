@@ -1,6 +1,5 @@
 package com.shvg.spring.springboot.restapi.basedata.helper;
 
-import com.shvg.spring.springboot.restapi.basedata.EmployeeData;
 import com.shvg.spring.springboot.restapi.beans.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +37,8 @@ public class EmployeeHelper {
                 .collect(Collectors.toList());
     }
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         new EmployeeHelper(EmployeeData.getMutableListOfExecutives())
                 .findByIds(new Integer[]{1001, 2002});
-    }
+    }*/
 }

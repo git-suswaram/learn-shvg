@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapi.baseData;
+package com.shvg.spring.springboot.restapi.basedata;
 
 
 import java.util.Arrays;
@@ -6,26 +6,51 @@ import java.util.List;
 
 public class PrimitiveTypeData {
 
-    public static int[] intArrayPayloads =
+    private PrimitiveTypeData() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    private static int[] intArrayPayloads =
             {
                     1, 2, 3, 4, 5
             };
-    public static List<int[]> listOfints = Arrays.asList(intArrayPayloads);
+    private static List<int[]> listOfints = Arrays.asList(intArrayPayloads);
 
 
-    public static Integer[] integerArrayPayloads =
+    private static Integer[] integerArrayPayloads =
             {
                     1, 2, 3, 4, 5
             };
-    public static List<Integer> listOfintegers = Arrays.asList(integerArrayPayloads);
+    private static List<Integer> listOfintegers = Arrays.asList(integerArrayPayloads);
 
 
-    public static String[] stringArrayPayloads =
+    private static String[] stringArrayPayloads =
             {
-                    "John Doe", "Jane Doe", "Joe Bloggs", "John Roe", "Richard Roe"
+                    "John Doe", "Jane Doe", "Joe Blogs", "John Roe", "Richard Roe"
             };
-    public static List<String> listOfStrings = Arrays.asList(stringArrayPayloads);
+    private static List<String> listOfStrings = Arrays.asList(stringArrayPayloads);
 
+    public static int[] getIntArrayPayloads() {
+        return intArrayPayloads;
+    }
 
+    public static List<int[]> getListOfints() {
+        return listOfints;
+    }
 
+    public static Integer[] getIntegerArrayPayloads() {
+        return integerArrayPayloads;
+    }
+
+    public static List<Integer> getListOfintegers() {
+        return listOfintegers;
+    }
+
+    public static String[] getStringArrayPayloads() {
+        return stringArrayPayloads;
+    }
+
+    public static List<String> getListOfStrings() {
+        return listOfStrings;
+    }
 }
