@@ -22,14 +22,14 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class DepartmentResource {
 
     private final DepartmentService departmentService;
+    private static final String ALL_DEPARTMENTS = "all-departments";
 
     @Autowired
     public DepartmentResource(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
-
-    @RequestMapping(method = RequestMethod.GET, path = "/department", produces = "application/json")
+    @GetMapping(path = "/department", produces = "application/json")
     public Resources<Department> get() {
 
         List<Department> departments = departmentService.get();
@@ -37,7 +37,7 @@ public class DepartmentResource {
         //HATEOAS : all-users, SERVER_PATH + "/users"
         Resources<Department> resources = new Resources<>(departments);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
-        resources.add(linkToAllDepts.withRel("all-departments"));
+        resources.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
 
         return resources;
     }
@@ -54,7 +54,7 @@ public class DepartmentResource {
         //HATEOAS : all-users, SERVER_PATH + "/users"
         Resource<Department> resource = new Resource(departmentByID);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
-        resource.add(linkToAllDepts.withRel("all-departments"));
+        resource.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
 
         return resource;
     }
@@ -72,7 +72,7 @@ public class DepartmentResource {
         //HATEOAS : all-users, SERVER_PATH + "/users"
         Resource<Department> resource = new Resource(newDepartment);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
-        resource.add(linkToAllDepts.withRel("all-departments"));
+        resource.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
 
         /*
          * Set Response status to Created

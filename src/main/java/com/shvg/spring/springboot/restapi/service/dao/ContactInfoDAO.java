@@ -1,5 +1,6 @@
-package com.shvg.spring.springboot.restapi.dao;
+package com.shvg.spring.springboot.restapi.service.dao;
 
+import com.shvg.spring.springboot.restapi.basedata.ContactInfoData;
 import com.shvg.spring.springboot.restapi.beans.ContactInfo;
 import com.shvg.spring.springboot.restapi.service.ContactInfoService;
 import org.springframework.stereotype.Component;
@@ -7,23 +8,21 @@ import org.springframework.stereotype.Component;
 import java.util.Iterator;
 import java.util.List;
 
-import static com.shvg.spring.springboot.restapi.baseData.ContactInfoData.mutableListOfContactInfos;
-
 
 @Component
 public class ContactInfoDAO implements ContactInfoService {
 
-    private int contactInfoCount = mutableListOfContactInfos.size();
+    private int contactInfoCount = ContactInfoData.getMutableListOfContactInfos().size();
 
     //findAll
     public List<ContactInfo> get() {
-        return mutableListOfContactInfos;
+        return ContactInfoData.getMutableListOfContactInfos();
     }
 
     //findOne
     public ContactInfo get(int contactInfoID) {
 
-        for (ContactInfo contactInfo : mutableListOfContactInfos) {
+        for (ContactInfo contactInfo : ContactInfoData.getMutableListOfContactInfos()) {
             if (contactInfo.getContactInfoID() == contactInfoID) {
                 return contactInfo;
             }
@@ -38,14 +37,14 @@ public class ContactInfoDAO implements ContactInfoService {
         if (contactInfo.getContactInfoID() == 0) {
             contactInfo.setContactInfoID(++contactInfoCount);
         }
-        mutableListOfContactInfos.add(contactInfo);
+        ContactInfoData.getMutableListOfContactInfos().add(contactInfo);
         return contactInfo;
     }
 
     //deleteOne
     public ContactInfo delete(int employeeID) {
 
-        Iterator<ContactInfo> iterator = mutableListOfContactInfos.iterator();
+        Iterator<ContactInfo> iterator = ContactInfoData.getMutableListOfContactInfos().iterator();
 
         while (iterator.hasNext()) {
 

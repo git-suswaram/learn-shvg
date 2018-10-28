@@ -28,6 +28,7 @@ public class RestAPIApplication {
     public static void main(String[] args) {
 
         //Get Spring Application Context and rest configurations from spring-rest-api-local.yaml file
+        logger.info("Starting Application");
         new SpringApplicationBuilder(RestAPIApplication.class)
                 .properties("spring.config.name=spring-rest-api-${ENV_NAME:local}")
                 .run(args);

@@ -26,10 +26,10 @@ import static com.shvg.spring.springboot.springintegration.annotation.baseAICode
 
 public class BaseSpringIntegrationApplication {
 
-	@Value("${ENV_NAME:local}")
-	private String env;
+    @Value("${ENV_NAME:local}")
+    private String env;
 
-	public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
          /*
         //Read configuration from application.properties
@@ -37,20 +37,20 @@ public class BaseSpringIntegrationApplication {
                 SpringApplication.run(LearnShvgApplication.class, args);
         */
 
-		//Read configuration from spring-springintegration-local.yaml file
-		ConfigurableApplicationContext ctx = new SpringApplicationBuilder(BaseSpringIntegrationApplication.class)
-				.properties("spring.config.name=spring-springintegration-${ENV_NAME:local},"+
-						"can-add-comma-separated-config-file-list")
-				.run(args);
+        //Read configuration from spring-springintegration-local.yaml file
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(BaseSpringIntegrationApplication.class)
+                .properties("spring.config.name=spring-springintegration-${ENV_NAME:local}," +
+                        "can-add-comma-separated-config-file-list")
+                .run(args);
 
-		Collection<String> stringCollection
-				= ctx.getBean(PrintGateway.class).printLower(listOfStrings);
-		System.out.println(stringCollection.toString());
+        Collection<String> stringCollection
+                = ctx.getBean(PrintGateway.class).printLower(listOfStrings);
+        System.out.println(stringCollection.toString());
 
-		Collection<String> stringCollection2
-				= ctx.getBean(PrintGateway.class).execute(listOfPersons);
-		System.out.println(stringCollection2.toString());
+        Collection<String> stringCollection2
+                = ctx.getBean(PrintGateway.class).execute(listOfPersons);
+        System.out.println(stringCollection2.toString());
 
-		ctx.close();
-	}
+        ctx.close();
+    }
 }

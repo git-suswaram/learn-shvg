@@ -47,8 +47,7 @@ public class CustomResponseEntityExceptionHandler
 
     @Override
     protected ResponseEntity<Object>
-    handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request)
-            throws NullPointerException {
+    handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(new Date(), "Validation Failed",

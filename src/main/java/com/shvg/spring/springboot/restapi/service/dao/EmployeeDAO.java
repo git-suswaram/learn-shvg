@@ -1,28 +1,28 @@
-package com.shvg.spring.springboot.restapi.dao;
+package com.shvg.spring.springboot.restapi.service.dao;
 
+import com.shvg.spring.springboot.restapi.basedata.EmployeeData;
 import com.shvg.spring.springboot.restapi.beans.Employee;
 import com.shvg.spring.springboot.restapi.service.EmployeeService;
 import org.springframework.stereotype.Component;
+
 import java.util.Iterator;
 import java.util.List;
-
-import static com.shvg.spring.springboot.restapi.baseData.EmployeeData.*;
 
 
 @Component
 public class EmployeeDAO implements EmployeeService {
 
-    private int employeeCount = mutableListOfExecutives.size();
+    private int employeeCount = EmployeeData.getMutableListOfExecutives().size();
 
     //findAll
     public List<Employee> get() {
-        return mutableListOfExecutives;
+        return EmployeeData.getMutableListOfExecutives();
     }
 
     //findOne
     public Employee get(int employeeID) {
 
-        for (Employee employee : mutableListOfExecutives) {
+        for (Employee employee : EmployeeData.getMutableListOfExecutives()) {
             if (employee.getEmployeeID() == employeeID) {
                 return employee;
             }
@@ -37,14 +37,14 @@ public class EmployeeDAO implements EmployeeService {
         if (employee.getEmployeeID() == 0) {
             employee.setEmployeeID(++employeeCount);
         }
-        mutableListOfExecutives.add(employee);
+        EmployeeData.getMutableListOfExecutives().add(employee);
         return employee;
     }
 
     //deleteOne
     public Employee delete(int employeeID) {
 
-        Iterator<Employee> iterator = mutableListOfExecutives.iterator();
+        Iterator<Employee> iterator = EmployeeData.getMutableListOfExecutives().iterator();
 
         while (iterator.hasNext()) {
             Employee employee = iterator.next();

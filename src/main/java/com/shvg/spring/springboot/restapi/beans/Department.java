@@ -1,6 +1,7 @@
 package com.shvg.spring.springboot.restapi.beans;
 
 import org.springframework.stereotype.Component;
+
 import javax.validation.constraints.Size;
 
 @Component
@@ -11,7 +12,6 @@ public class Department {
     @Size(min = 2, message = "Department Name should have at-least 2 characters.")
     private String departmentName;
 
-    //@Size(min = 4, message = "EmployeeID of departments HOD should be at-least 4 digits.")
     private int headOfDepartmentEmpID;
 
     /** Setter Methods and  Default no-argument constructor is required for processing REST requests */

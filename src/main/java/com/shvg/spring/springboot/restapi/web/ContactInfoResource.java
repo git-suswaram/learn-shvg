@@ -27,13 +27,10 @@ public class ContactInfoResource {
         this.contactInfoService = contactInfoService;
     }
 
-
-    @RequestMapping(method = RequestMethod.GET, path = "/contactInfo")
+    @GetMapping(path = "/contactInfo")
     public List<ContactInfo> get() {
-        
-        List<ContactInfo> contactInfos = contactInfoService.get();
 
-        return contactInfos;
+        return contactInfoService.get();
     }
 
     @GetMapping(path = "/contactInfo/{contactInfoID}")
