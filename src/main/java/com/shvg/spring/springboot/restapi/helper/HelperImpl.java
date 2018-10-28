@@ -18,6 +18,10 @@ public class HelperImpl implements IHelper {
         this.objectList = objectList;
     }
 
+    /**
+     * Class.forName(object.getClass().getName()).getMethod()
+     * ClassLoader.getSystemClassLoader().loadClass(object.getClass().getName()).getMethod()
+     */
     @Override
     public Object findById(Integer id)
             throws NoSuchMethodException,
@@ -25,7 +29,6 @@ public class HelperImpl implements IHelper {
 
         for (Object object : objectList) {
             Object getId =
-                    //Class.forName(object.getClass().getName())
                     object.getClass()
                             .getMethod("getId")
                             .invoke(object, (Object[]) null);
@@ -53,7 +56,6 @@ public class HelperImpl implements IHelper {
                     }
                 })
                 .filter(Objects::nonNull)
-                //.peek(e -> logger.info("\nEmployeeList using findByIds: {}\n", e))
                 .collect(Collectors.toList());
     }
 }
