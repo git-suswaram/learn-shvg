@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapi.baseData;
+package com.shvg.spring.springboot.restapi.basedata;
 
 import com.shvg.spring.springboot.restapi.beans.ContactInfo;
 
@@ -8,7 +8,13 @@ import java.util.List;
 
 public class ContactInfoData {
 
-    public static ContactInfo[] arrayOfContactInfoPayLoad =
+    private ContactInfoData()
+    {
+        throw new IllegalStateException("Utility class");
+    }
+
+
+    private static final ContactInfo[] arrayOfContactInfoPayLoad =
             {
                     new ContactInfo(1001, "1001 Best St", "Suite 300", "Best", "CA", "32341", "US", "12172354891", "12357547963",1001),
                     new ContactInfo(2001, "2001 Main St", "", "Main", "NY", "42342","US", "13172354892","",2001),
@@ -22,9 +28,9 @@ public class ContactInfoData {
                     new ContactInfo(5105, "5051 Good Tr", "","Good", "TN", "23450", "US", "19272354890","",5105),
 
             };
-    public static List<ContactInfo> immutableListOfContactInfos = Arrays.asList(arrayOfContactInfoPayLoad);
+    private static final List<ContactInfo> immutableListOfContactInfos = Arrays.asList(arrayOfContactInfoPayLoad);
 
-    public static List<ContactInfo> mutableListOfContactInfos = new ArrayList<>();
+    private static final List<ContactInfo> mutableListOfContactInfos = new ArrayList<>();
 
     static {
         mutableListOfContactInfos.add(new ContactInfo(1001, "1001 Best St", "Suite 300", "Best", "CA", "32341", "US", "12172354891", "12357547963",1001));
@@ -38,4 +44,17 @@ public class ContactInfoData {
         mutableListOfContactInfos.add(new ContactInfo(4104, "4041 Good Ln", "", "Good", "MO", "22349", "US", "18272354869", "",4104));
         mutableListOfContactInfos.add(new ContactInfo(5105, "5051 Good Tr", "", "Good", "TN", "23450", "US", "19272354890", "",5105));
     }
+
+    public static ContactInfo[] getArrayOfContactInfoPayLoad() {
+        return arrayOfContactInfoPayLoad;
+    }
+
+    public static List<ContactInfo> getImmutableListOfContactInfos() {
+        return immutableListOfContactInfos;
+    }
+
+    public static List<ContactInfo> getMutableListOfContactInfos() {
+        return mutableListOfContactInfos;
+    }
+
 }

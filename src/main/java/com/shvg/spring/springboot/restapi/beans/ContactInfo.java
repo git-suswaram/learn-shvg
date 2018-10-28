@@ -24,7 +24,9 @@ public class ContactInfo {
     public ContactInfo() {
     }
 
-    public ContactInfo(int contactInfoID, String addressLine1, String city, String state, String zipCode, String country, String mobilePhone) {
+    public ContactInfo(int contactInfoID, String addressLine1, String city,
+                       String state, String zipCode, String country,
+                       String mobilePhone) {
         this.contactInfoID = contactInfoID;
         this.addressLine1 = addressLine1;
         this.city = city;
@@ -34,19 +36,11 @@ public class ContactInfo {
         this.mobilePhone = mobilePhone;
     }
 
-    public ContactInfo(int contactInfoID, String addressLine1, String addressLine2, String city, String state, String zipCode, String country, String mobilePhone, String officePhone) {
-        this.contactInfoID = contactInfoID;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-        this.country = country;
-        this.mobilePhone = mobilePhone;
-        this.officePhone = officePhone;
-    }
 
-    public ContactInfo(int contactInfoID, String addressLine1, String addressLine2, String city, String state, String zipCode, String country, String mobilePhone, String officePhone, int employeeID) {
+
+    public ContactInfo(int contactInfoID, String addressLine1, String addressLine2,
+                       String city, String state, String zipCode, String country,
+                       String mobilePhone, String officePhone, int employeeID) {
         this.contactInfoID = contactInfoID;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;

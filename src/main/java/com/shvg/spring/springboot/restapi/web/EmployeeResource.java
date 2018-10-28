@@ -26,20 +26,19 @@ public class EmployeeResource {
         this.employeeService = employeeService;
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/employee")
+    @GetMapping(path = "/employee")
     public MappingJacksonValue get() {
 
         List<Employee> employees = employeeService.get();
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID","firstName","lastName","jobTitle");
-        FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo",filter);
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
+        FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employees);
         mappingJacksonValue.setFilters(filters);
 
         return mappingJacksonValue;
     }
-
 
     @GetMapping(path = "/employee/{employeeID}")
     public MappingJacksonValue get(@PathVariable int employeeID) {
@@ -49,8 +48,8 @@ public class EmployeeResource {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID","firstName","lastName","dateOfBirth");
-        FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo",filter);
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "dateOfBirth");
+        FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employeeByID);
         mappingJacksonValue.setFilters(filters);
