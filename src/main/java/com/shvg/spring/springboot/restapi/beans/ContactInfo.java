@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 @Component
-@JsonIgnoreProperties(value={"addressLine2","zipCode"})
+@JsonIgnoreProperties(value = {"addressLine2", "zipCode"})
 public class ContactInfo {
 
-    private int contactInfoID;
+    private int id;
     private String addressLine1;
     private String addressLine2;
     private String city;
@@ -20,14 +20,16 @@ public class ContactInfo {
     private String officePhone;
     private int employeeID;
 
-    /** Setter Methods and  Default no-argument constructor is required for processing REST requests */
+    /**
+     * Setter Methods and  Default no-argument constructor is required for processing REST requests
+     */
     public ContactInfo() {
     }
 
-    public ContactInfo(int contactInfoID, String addressLine1, String city,
+    public ContactInfo(int id, String addressLine1, String city,
                        String state, String zipCode, String country,
                        String mobilePhone) {
-        this.contactInfoID = contactInfoID;
+        this.id = id;
         this.addressLine1 = addressLine1;
         this.city = city;
         this.state = state;
@@ -37,11 +39,10 @@ public class ContactInfo {
     }
 
 
-
-    public ContactInfo(int contactInfoID, String addressLine1, String addressLine2,
+    public ContactInfo(int id, String addressLine1, String addressLine2,
                        String city, String state, String zipCode, String country,
                        String mobilePhone, String officePhone, int employeeID) {
-        this.contactInfoID = contactInfoID;
+        this.id = id;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
@@ -53,12 +54,12 @@ public class ContactInfo {
         this.employeeID = employeeID;
     }
 
-    public int getContactInfoID() {
-        return contactInfoID;
+    public int getId() {
+        return id;
     }
 
-    public void setContactInfoID(int contactInfoID) {
-        this.contactInfoID = contactInfoID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAddressLine1() {
@@ -136,7 +137,7 @@ public class ContactInfo {
     @Override
     public String toString() {
         return "ContactInfoService{" +
-                "contactInfoID=" + contactInfoID +
+                "id=" + id +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", city='" + city + '\'' +

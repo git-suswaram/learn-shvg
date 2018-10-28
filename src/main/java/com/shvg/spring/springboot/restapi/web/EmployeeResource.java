@@ -74,7 +74,7 @@ public class EmployeeResource {
         URI newEmployeeURI = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(newEmployee.getEmployeeID()).toUri();
+                .buildAndExpand(newEmployee.getId()).toUri();
 
         return ResponseEntity.created(newEmployeeURI).build();
     }

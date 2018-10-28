@@ -23,7 +23,7 @@ public class DepartmentDAO implements DepartmentService {
     public Department get(int departmentID) {
 
         for (Department department : DepartmentData.getMutableListOfDepartments()) {
-            if (department.getDepartmentID() == departmentID) {
+            if (department.getId() == departmentID) {
                 return department;
             }
         }
@@ -34,8 +34,8 @@ public class DepartmentDAO implements DepartmentService {
     //save
     public Department post(Department department) {
 
-        if (department.getDepartmentID() == 0) {
-            department.setDepartmentID(++departmentCount);
+        if (department.getId() == 0) {
+            department.setId(++departmentCount);
         }
         DepartmentData.getMutableListOfDepartments().add(department);
         return department;
@@ -48,7 +48,7 @@ public class DepartmentDAO implements DepartmentService {
 
         while (iterator.hasNext()) {
             Department department = iterator.next();
-            if (department.getDepartmentID() == departmentID) {
+            if (department.getId() == departmentID) {
                 iterator.remove();
                 return department;
             }

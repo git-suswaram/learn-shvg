@@ -66,7 +66,7 @@ public class ContactInfoResource {
         URI newContactInfoURI = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(newContactInfo.getContactInfoID()).toUri();
+                .buildAndExpand(newContactInfo.getId()).toUri();
 
         return ResponseEntity.created(newContactInfoURI).build();
     }

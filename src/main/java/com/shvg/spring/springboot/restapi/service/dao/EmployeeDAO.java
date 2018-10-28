@@ -23,7 +23,7 @@ public class EmployeeDAO implements EmployeeService {
     public Employee get(int employeeID) {
 
         for (Employee employee : EmployeeData.getMutableListOfExecutives()) {
-            if (employee.getEmployeeID() == employeeID) {
+            if (employee.getId() == employeeID) {
                 return employee;
             }
         }
@@ -34,8 +34,8 @@ public class EmployeeDAO implements EmployeeService {
     //save
     public Employee post(Employee employee) {
 
-        if (employee.getEmployeeID() == 0) {
-            employee.setEmployeeID(++employeeCount);
+        if (employee.getId() == 0) {
+            employee.setId(++employeeCount);
         }
         EmployeeData.getMutableListOfExecutives().add(employee);
         return employee;
@@ -48,7 +48,7 @@ public class EmployeeDAO implements EmployeeService {
 
         while (iterator.hasNext()) {
             Employee employee = iterator.next();
-            if (employee.getEmployeeID() == employeeID) {
+            if (employee.getId() == employeeID) {
                 iterator.remove();
                 return employee;
             }

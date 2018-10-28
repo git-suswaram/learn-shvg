@@ -7,29 +7,31 @@ import javax.validation.constraints.Size;
 @Component
 public class Department {
 
-    private int departmentID;
+    private int id;
 
     @Size(min = 2, message = "Department Name should have at-least 2 characters.")
     private String departmentName;
 
     private int headOfDepartmentEmpID;
 
-    /** Setter Methods and  Default no-argument constructor is required for processing REST requests */
+    /**
+     * Setter Methods and  Default no-argument constructor is required for processing REST requests
+     */
     public Department() {
     }
 
-    public Department(int departmentID, String departmentName, int headOfDepartmentEmpID) {
-        this.departmentID = departmentID;
+    public Department(int id, String departmentName, int headOfDepartmentEmpID) {
+        this.id = id;
         this.departmentName = departmentName;
         this.headOfDepartmentEmpID = headOfDepartmentEmpID;
     }
 
-    public int getDepartmentID() {
-        return departmentID;
+    public int getId() {
+        return id;
     }
 
-    public void setDepartmentID(int departmentID) {
-        this.departmentID = departmentID;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDepartmentName() {
@@ -51,7 +53,7 @@ public class Department {
     @Override
     public String toString() {
         return "Department{" +
-                "departmentID=" + departmentID +
+                "id=" + id +
                 ", departmentName='" + departmentName + '\'' +
                 ", headOfDepartmentEmpID='" + headOfDepartmentEmpID + '\'' +
                 '}';

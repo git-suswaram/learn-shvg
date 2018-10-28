@@ -8,8 +8,8 @@ import java.util.Objects;
 
 @Component
 @JsonFilter("FilterEmployeeInfo")
-public class Employee implements Comparable<Employee>{
-    private int employeeID;
+public class Employee implements Comparable<Employee> {
+    private int id;
     private String firstName;
     private String lastName;
     private String fullName;
@@ -19,32 +19,34 @@ public class Employee implements Comparable<Employee>{
     private Double netAnnualIncome;
 
 
-    /** Setter Methods and  Default no-argument constructor is required for processing REST requests */
+    /**
+     * Setter Methods and  Default no-argument constructor is required for processing REST requests
+     */
     public Employee() {
     }
 
-    public Employee(int employeeID, String firstName, String lastName) {
-        this.employeeID = employeeID;
+    public Employee(int id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, LocalDate dateOfBirth) {
-        this.employeeID = employeeID;
+    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth=dateOfBirth;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, String department) {
-        this.employeeID = employeeID;
+    public Employee(int id, String firstName, String lastName, String department) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle) {
-        this.employeeID = employeeID;
+    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -52,8 +54,8 @@ public class Employee implements Comparable<Employee>{
         this.jobTitle = jobTitle;
     }
 
-    public Employee(int employeeID, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
-        this.employeeID = employeeID;
+    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -63,12 +65,12 @@ public class Employee implements Comparable<Employee>{
     }
 
 
-    public int getEmployeeID() {
-        return employeeID;
+    public int getId() {
+        return id;
     }
 
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public void setId(int employeeID) {
+        this.id = employeeID;
     }
 
     public String getFirstName() {
@@ -144,7 +146,7 @@ public class Employee implements Comparable<Employee>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(getEmployeeID(), employee.getEmployeeID()) &&
+        return Objects.equals(getId(), employee.getId()) &&
                 Objects.equals(getFirstName(), employee.getFirstName()) &&
                 Objects.equals(getLastName(), employee.getLastName()) &&
                 Objects.equals(getDateOfBirth(), employee.getDateOfBirth()) &&
@@ -154,13 +156,13 @@ public class Employee implements Comparable<Employee>{
 
     @Override
     public int hashCode() {
-        return Objects.hash(getEmployeeID(), getFirstName(), getLastName(), getDateOfBirth(), getJobTitle(), getNetAnnualIncome());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getDateOfBirth(), getJobTitle(), getNetAnnualIncome());
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "employeeID=" + employeeID +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", dateOfBirth=" + dateOfBirth +

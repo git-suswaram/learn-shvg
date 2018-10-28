@@ -82,7 +82,7 @@ public class DepartmentResource {
         URI newDepartmentURI = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
-                .buildAndExpand(newDepartment.getDepartmentID()).toUri();
+                .buildAndExpand(newDepartment.getId()).toUri();
 
         return ResponseEntity.created(newDepartmentURI).body(resource);
     }

@@ -23,7 +23,7 @@ public class ContactInfoDAO implements ContactInfoService {
     public ContactInfo get(int contactInfoID) {
 
         for (ContactInfo contactInfo : ContactInfoData.getMutableListOfContactInfos()) {
-            if (contactInfo.getContactInfoID() == contactInfoID) {
+            if (contactInfo.getId() == contactInfoID) {
                 return contactInfo;
             }
         }
@@ -34,8 +34,8 @@ public class ContactInfoDAO implements ContactInfoService {
     //save
     public ContactInfo post(ContactInfo contactInfo) {
 
-        if (contactInfo.getContactInfoID() == 0) {
-            contactInfo.setContactInfoID(++contactInfoCount);
+        if (contactInfo.getId() == 0) {
+            contactInfo.setId(++contactInfoCount);
         }
         ContactInfoData.getMutableListOfContactInfos().add(contactInfo);
         return contactInfo;
@@ -49,7 +49,7 @@ public class ContactInfoDAO implements ContactInfoService {
         while (iterator.hasNext()) {
 
             ContactInfo contactInfo = iterator.next();
-            if (contactInfo.getContactInfoID() == employeeID) {
+            if (contactInfo.getId() == employeeID) {
                 iterator.remove();
                 return contactInfo;
             }

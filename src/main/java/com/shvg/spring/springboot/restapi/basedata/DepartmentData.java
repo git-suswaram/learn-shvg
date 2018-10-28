@@ -28,7 +28,7 @@ public class DepartmentData {
         mutableListOfDepartments.add(new Department(101, "Information Technology", 1001));
         mutableListOfDepartments.add(new Department(102, "Finance", 3003));
         mutableListOfDepartments.add(new Department(103, "Accounts", 3003));
-        mutableListOfDepartments.add(new Department(103, "Accounts", 5005));
+        mutableListOfDepartments.add(new Department(104, "Accounts", 5005));
     }
 
     public static List<Department> getImmutableListOfDepartments() {
