@@ -20,12 +20,13 @@ public class HelperImpl implements IHelper {
 
     @Override
     public Object findById(Integer id)
-            throws ClassNotFoundException, NoSuchMethodException,
+            throws NoSuchMethodException,
             InvocationTargetException, IllegalAccessException {
 
         for (Object object : objectList) {
             Object getId =
-                    Class.forName(object.getClass().getName())
+                    //Class.forName(object.getClass().getName())
+                    object.getClass()
                             .getMethod("getId")
                             .invoke(object, (Object[]) null);
 
@@ -44,8 +45,7 @@ public class HelperImpl implements IHelper {
                 .map((Integer e) -> {
                     try {
                         return findById(e);
-                    } catch (ClassNotFoundException
-                            | NoSuchMethodException
+                    } catch (NoSuchMethodException
                             | IllegalAccessException
                             | InvocationTargetException e1) {
                         logger.error("Exception Occurred: {}", (Object) e1.getStackTrace());
@@ -53,7 +53,7 @@ public class HelperImpl implements IHelper {
                     }
                 })
                 .filter(Objects::nonNull)
-                .peek(e -> logger.info("\nEmployeeList using findByIds: {}\n", e))
+                //.peek(e -> logger.info("\nEmployeeList using findByIds: {}\n", e))
                 .collect(Collectors.toList());
     }
 }
