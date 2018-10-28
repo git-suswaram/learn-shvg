@@ -1,7 +1,5 @@
 package com.shvg.spring.springboot.restapi.helper;
 
-import com.shvg.spring.springboot.restapi.basedata.DepartmentData;
-import com.shvg.spring.springboot.restapi.basedata.EmployeeData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,27 +55,5 @@ public class HelperImpl implements IHelper {
                 .filter(Objects::nonNull)
                 .peek(e -> logger.info("\nEmployeeList using findByIds: {}\n", e))
                 .collect(Collectors.toList());
-    }
-
-    public static void main(String[] args)
-            throws ClassNotFoundException, NoSuchMethodException,
-            IllegalAccessException, InvocationTargetException {
-
-        Object employeeById = new HelperImpl(EmployeeData.getMutableListOfExecutives())
-                .findById(2002);
-        logger.info("\nOutput from Employee::findById: {}\n", employeeById);
-
-        Object departmentById = new HelperImpl(DepartmentData.getMutableListOfDepartments())
-                .findById(103);
-        logger.info("\nOutput from Department::findById: {}\n", departmentById);
-
-        List<?> employeeByIds = new HelperImpl(EmployeeData.getMutableListOfExecutives())
-                .findByIds(new Integer[]{1001, 2002});
-        logger.info("\nOutput from Employee::findByIds: {}\n", employeeByIds);
-
-        Object departmentByIds = new HelperImpl(DepartmentData.getMutableListOfDepartments())
-                .findByIds(new Integer[]{103, 104});
-        logger.info("\nOutput from Department::findByIds: {}\n", departmentByIds);
-
     }
 }
