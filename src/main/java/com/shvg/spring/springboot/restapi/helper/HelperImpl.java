@@ -14,8 +14,8 @@ public class HelperImpl implements IHelper {
     private static Logger logger = LoggerFactory.getLogger(HelperImpl.class);
     private List<?> objectList;
 
-    public HelperImpl(List<?> empList) {
-        this.objectList = empList;
+    public HelperImpl(List<?> objectList) {
+        this.objectList = objectList;
     }
 
     @Override
