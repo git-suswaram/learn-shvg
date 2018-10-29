@@ -1,15 +1,16 @@
-package com.shvg.spring.springboot.restapi.beans;
+package com.shvg.spring.springboot.restapi.entity;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import javax.validation.constraints.Size;
+@Entity
+public class JDepartment {
 
-@Component
-public class Department {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-
-    @Size(min = 2, message = "Department Name should have at-least 2 characters.")
     private String departmentName;
     private int numberOfEmployees;
     private int headOfDepartmentEmpID;
@@ -17,16 +18,16 @@ public class Department {
     /**
      * Setter Methods and  Default no-argument constructor is required for processing REST requests
      */
-    public Department() {
+    public JDepartment() {
     }
 
-    public Department(int id, String departmentName, int headOfDepartmentEmpID) {
+    public JDepartment(int id, String departmentName, int headOfDepartmentEmpID) {
         this.id = id;
         this.departmentName = departmentName;
         this.headOfDepartmentEmpID = headOfDepartmentEmpID;
     }
 
-    public Department(String departmentName, int numberOfEmployees) {
+    public JDepartment(String departmentName, int numberOfEmployees) {
         this.departmentName = departmentName;
         this.numberOfEmployees = numberOfEmployees;
     }
@@ -39,20 +40,20 @@ public class Department {
         this.id = id;
     }
 
-    public int getNumberOfEmployees() {
-        return numberOfEmployees;
-    }
-
-    public void setNumberOfEmployees(int numberOfEmployees) {
-        this.numberOfEmployees = numberOfEmployees;
-    }
-
     public String getDepartmentName() {
         return departmentName;
     }
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public int getNumberOfEmployees() {
+        return numberOfEmployees;
+    }
+
+    public void setNumberOfEmployees(int numberOfEmployees) {
+        this.numberOfEmployees = numberOfEmployees;
     }
 
     public int getHeadOfDepartmentEmpID() {

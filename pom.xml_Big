@@ -129,6 +129,11 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Fix for cannot access javax.interceptor.InterceptorBinding -->
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+        </dependency>
 
         <!-- Caching Components -->
         <dependency>
