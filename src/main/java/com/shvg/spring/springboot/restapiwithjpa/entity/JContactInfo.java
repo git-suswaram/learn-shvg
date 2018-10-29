@@ -29,7 +29,7 @@ public class JContactInfo {
     private int employeeID;
 
     /**
-     * Setter Methods and  Default no-argument constructor is required for processing REST requests
+     * Default no-argument constructor is required for JPA
      */
     public JContactInfo() {
     }

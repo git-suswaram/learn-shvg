@@ -16,7 +16,7 @@ public class JDepartment {
     private int headOfDepartmentEmpID;
 
     /**
-     * Setter Methods and  Default no-argument constructor is required for JPA
+     * Default no-argument constructor is required for JPA
      */
     public JDepartment() {
     }
