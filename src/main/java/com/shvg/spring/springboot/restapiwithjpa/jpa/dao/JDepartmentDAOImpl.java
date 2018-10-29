@@ -1,7 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.jpa.dao;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
-import com.shvg.spring.springboot.restapiwithjpa.jpa.JDepartmentService;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -29,7 +28,7 @@ public class JDepartmentDAOImpl implements JDepartmentService {
     }
 
     @Override
-    public JDepartment post(JDepartment department){
+    public JDepartment post(JDepartment department) {
 
         entityManager.persist(department);
         return department;
@@ -40,4 +39,6 @@ public class JDepartmentDAOImpl implements JDepartmentService {
         //TODO: Implement
         return null;
     }
+
+
 }

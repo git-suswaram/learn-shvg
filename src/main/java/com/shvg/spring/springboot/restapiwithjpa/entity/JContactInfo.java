@@ -1,13 +1,22 @@
-package com.shvg.spring.springboot.restapiwithjpa.beans;
+package com.shvg.spring.springboot.restapiwithjpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
-@Component
-@JsonIgnoreProperties(value = {"addressLine2", "zipCode"})
-public class ContactInfo {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Component
+@Entity
+@JsonIgnoreProperties(value = {"addressLine2", "zipCode"})
+public class JContactInfo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonIgnore
     private int id;
     private String addressLine1;
     private String addressLine2;
@@ -15,7 +24,6 @@ public class ContactInfo {
     private String state;
     private String zipCode;
     private String country;
-    @JsonIgnore
     private String mobilePhone;
     private String officePhone;
     private int employeeID;
@@ -23,26 +31,13 @@ public class ContactInfo {
     /**
      * Setter Methods and  Default no-argument constructor is required for processing REST requests
      */
-    public ContactInfo() {
-    }
-
-    public ContactInfo(int id, String addressLine1, String city,
-                       String state, String zipCode, String country,
-                       String mobilePhone) {
-        this.id = id;
-        this.addressLine1 = addressLine1;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-        this.country = country;
-        this.mobilePhone = mobilePhone;
+    public JContactInfo() {
     }
 
 
-    public ContactInfo(int id, String addressLine1, String addressLine2,
-                       String city, String state, String zipCode, String country,
-                       String mobilePhone, String officePhone, int employeeID) {
-        this.id = id;
+    public JContactInfo(String addressLine1, String addressLine2,
+                        String city, String state, String zipCode, String country,
+                        String mobilePhone, String officePhone, int employeeID) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
@@ -136,7 +131,7 @@ public class ContactInfo {
 
     @Override
     public String toString() {
-        return "ContactInfoService{" +
+        return "JContactInfoService{" +
                 "id=" + id +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +

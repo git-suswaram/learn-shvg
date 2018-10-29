@@ -1,14 +1,22 @@
-package com.shvg.spring.springboot.restapiwithjpa.beans;
+package com.shvg.spring.springboot.restapiwithjpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Component
+@Entity
 @JsonFilter("FilterEmployeeInfo")
-public class Employee implements Comparable<Employee> {
+public class JEmployee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     private String firstName;
     private String lastName;
@@ -18,44 +26,19 @@ public class Employee implements Comparable<Employee> {
     private String jobTitle;
     private Double netAnnualIncome;
 
-
     /**
      * Setter Methods and  Default no-argument constructor is required for processing REST requests
      */
-    public Employee() {
+    public JEmployee() {
     }
 
-    public Employee(int id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Employee(int id, String firstName, String lastName, String department) {
-        this.id = id;
+    public JEmployee(String firstName, String lastName, String department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
     }
 
-    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.department = department;
-        this.jobTitle = jobTitle;
-    }
-
-    public Employee(int id, String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
-        this.id = id;
+    public JEmployee(String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -63,7 +46,6 @@ public class Employee implements Comparable<Employee> {
         this.jobTitle = jobTitle;
         this.netAnnualIncome = netAnnualIncome;
     }
-
 
     public int getId() {
         return id;
@@ -135,8 +117,7 @@ public class Employee implements Comparable<Employee> {
         setNetAnnualIncome(newNetAnnualIncome);
     }
 
-    @Override
-    public int compareTo(Employee employee) {
+    public int compareTo(JEmployee employee) {
         return lastName.compareTo(employee.lastName)
                 ;
     }
@@ -145,7 +126,7 @@ public class Employee implements Comparable<Employee> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
+        JEmployee employee = (JEmployee) o;
         return Objects.equals(getId(), employee.getId()) &&
                 Objects.equals(getFirstName(), employee.getFirstName()) &&
                 Objects.equals(getLastName(), employee.getLastName()) &&

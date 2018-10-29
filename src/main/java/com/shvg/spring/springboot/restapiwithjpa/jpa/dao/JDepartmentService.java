@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapiwithjpa.jpa;
+package com.shvg.spring.springboot.restapiwithjpa.jpa.dao;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 

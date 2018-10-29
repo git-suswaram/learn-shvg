@@ -20,7 +20,7 @@ Otherwise use below syntax
 @SpringBootApplication
 @Configuration
 
-public class BaseAnnotationApplication {
+public class BaseSpringBootApplication {
 
     @Value("${ENV_NAME:local}")
     private String env;
@@ -28,7 +28,7 @@ public class BaseAnnotationApplication {
     public static void main(String[] args) {
 
         //Read configuration from spring-springintegration-local.yaml file
-        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(BaseAnnotationApplication.class)
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(BaseSpringBootApplication.class)
                 .properties("spring.config.name=spring-config-file-${ENV_NAME:local}," +
                         "can-add-comma-separated-config-file-list")
                 .run(args);

@@ -1,8 +1,8 @@
 package com.shvg.spring.springboot.restapiwithjpa.web;
 
-import com.shvg.spring.springboot.restapiwithjpa.beans.ContactInfo;
+import com.shvg.spring.springboot.restapiwithjpa.entity.JContactInfo;
 import com.shvg.spring.springboot.restapiwithjpa.exception.ContactInfoNotFoundException;
-import com.shvg.spring.springboot.restapiwithjpa.service.ContactInfoService;
+import com.shvg.spring.springboot.restapiwithjpa.jpa.repository.JContactInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
@@ -20,29 +21,29 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RestController
 public class ContactInfoResource {
 
-    private final ContactInfoService contactInfoService;
+    private final JContactInfoRepository jContactInfoRepository;
 
     @Autowired
-    public ContactInfoResource(ContactInfoService contactInfoService) {
-        this.contactInfoService = contactInfoService;
+    public ContactInfoResource(JContactInfoRepository jContactInfoRepository) {
+        this.jContactInfoRepository = jContactInfoRepository;
     }
 
     @GetMapping(path = "/contactInfo")
-    public List<ContactInfo> get() {
+    public List<JContactInfo> get() {
 
-        return contactInfoService.get();
+        return jContactInfoRepository.findAll();
     }
 
     @GetMapping(path = "/contactInfo/{contactInfoID}")
-    public Resource<ContactInfo> get(@PathVariable int contactInfoID) {
+    public Resource<JContactInfo> get(@PathVariable int contactInfoID) {
 
-        ContactInfo contactInfoByID = contactInfoService.get(contactInfoID);
-        if (contactInfoByID == null) {
+        Optional<JContactInfo> contactInfoByID = jContactInfoRepository.findById(contactInfoID);
+        if (!contactInfoByID.isPresent()) {
             throw new ContactInfoNotFoundException("Failed to retrieve. ContactInfo Not Found, ID = " + contactInfoID);
         }
 
         //HATEOAS
-        Resource<ContactInfo> resource = new Resource<>(contactInfoByID);
+        Resource<JContactInfo> resource = new Resource(contactInfoByID);
         ControllerLinkBuilder linkToRetrieveAllContactInfo = linkTo(methodOn(this.getClass()).get());
         resource.add(linkToRetrieveAllContactInfo.withRel("all-contacts"));
 
@@ -54,9 +55,9 @@ public class ContactInfoResource {
      * output - HTTPStatus of CREATED & Return URI for the contactInfo created
      */
     @PostMapping(path = "/contactInfo")
-    public ResponseEntity<Object> post(@Valid @RequestBody ContactInfo contactInfo) {
+    public ResponseEntity<Object> post(@Valid @RequestBody JContactInfo contactInfo) {
 
-        ContactInfo newContactInfo = contactInfoService.post(contactInfo);
+        JContactInfo newContactInfo = jContactInfoRepository.save(contactInfo);
 
         /*
          * Set Response status to Created
@@ -74,12 +75,8 @@ public class ContactInfoResource {
     @DeleteMapping(path = "/contactInfo/{contactInfoID}")
     public ResponseEntity<Object> delete(@PathVariable int contactInfoID) {
 
-        ContactInfo deleteContactInfoByID = contactInfoService.delete(contactInfoID);
-
-        if (deleteContactInfoByID == null) {
-            throw new ContactInfoNotFoundException("Failed to Delete. ContactInfo Not Found, ID = " + contactInfoID);
-        }
-
+        jContactInfoRepository.deleteById(contactInfoID);
+        
         return ResponseEntity.noContent().build();
 
     }

@@ -136,7 +136,7 @@ public class ContactInfo {
 
     @Override
     public String toString() {
-        return "ContactInfoService{" +
+        return "JContactInfoService{" +
                 "id=" + id +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +

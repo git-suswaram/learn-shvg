@@ -3,9 +3,9 @@ package com.shvg.spring.springboot.restapiwithjpa.web;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.shvg.spring.springboot.restapiwithjpa.beans.Employee;
+import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
 import com.shvg.spring.springboot.restapiwithjpa.exception.EmployeeNotFoundException;
-import com.shvg.spring.springboot.restapiwithjpa.service.EmployeeService;
+import com.shvg.spring.springboot.restapiwithjpa.service.JEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -19,17 +19,17 @@ import java.util.List;
 @RestController
 public class EmployeeResource {
 
-    private final EmployeeService employeeService;
+    private final JEmployeeService JEmployeeService;
 
     @Autowired
-    public EmployeeResource(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public EmployeeResource(JEmployeeService JEmployeeService) {
+        this.JEmployeeService = JEmployeeService;
     }
 
     @GetMapping(path = "/employee")
     public MappingJacksonValue get() {
 
-        List<Employee> employees = employeeService.get();
+        List<JEmployee> employees = JEmployeeService.get();
 
         SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
         FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
@@ -43,7 +43,7 @@ public class EmployeeResource {
     @GetMapping(path = "/employee/{employeeID}")
     public MappingJacksonValue get(@PathVariable int employeeID) {
 
-        Employee employeeByID = employeeService.get(employeeID);
+        JEmployee employeeByID = JEmployeeService.get(employeeID);
         if (employeeByID == null) {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
@@ -62,9 +62,9 @@ public class EmployeeResource {
      * output - HTTPStatus of CREATED & Return URI for the employee created
      */
     @PostMapping(path = "/employee")
-    public ResponseEntity<Object> post(@Valid @RequestBody Employee employee) {
+    public ResponseEntity<Object> post(@Valid @RequestBody JEmployee employee) {
 
-        Employee newEmployee = employeeService.post(employee);
+        JEmployee newEmployee = JEmployeeService.post(employee);
 
         /*
          * Set Response status to Created
@@ -82,7 +82,7 @@ public class EmployeeResource {
     @DeleteMapping(path = "/employee/{employeeID}")
     public ResponseEntity<Object> delete(@PathVariable int employeeID) {
 
-        Employee deleteEmployeeByID = employeeService.delete(employeeID);
+        JEmployee deleteEmployeeByID = JEmployeeService.delete(employeeID);
 
         if (deleteEmployeeByID == null) {
             throw new EmployeeNotFoundException("Failed to Delete. Employee Not Found, ID = " + employeeID);
