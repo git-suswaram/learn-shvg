@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
 import com.shvg.spring.springboot.restapiwithjpa.exception.EmployeeNotFoundException;
-import com.shvg.spring.springboot.restapiwithjpa.jpa.repository.JEmployeeRepository;
+import com.shvg.spring.springboot.restapiwithjpa.service.JEmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -20,20 +22,20 @@ import java.util.Optional;
 @RestController
 public class EmployeeResource {
 
-    private final JEmployeeRepository jEmployeeRepository;
-
     @Autowired
-    public EmployeeResource(JEmployeeRepository jEmployeeRepository) {
-        this.jEmployeeRepository = jEmployeeRepository;
+    private final JEmployeeService jeEmployeeService;
+    private static Logger logger = LoggerFactory.getLogger(EmployeeResource.class);
+
+    public EmployeeResource(JEmployeeService jeEmployeeService) {
+        this.jeEmployeeService = jeEmployeeService;
     }
 
-    @GetMapping(path = "/employee")
+    @GetMapping(path = "/jpa/employee")
     public MappingJacksonValue get() {
+        logger.info("Entering /jpa/employee");
+        List<JEmployee> employees = jeEmployeeService.get();
 
-        List<JEmployee> employees = jEmployeeRepository.findAll();
-
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
-                .filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
         FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employees);
@@ -42,11 +44,12 @@ public class EmployeeResource {
         return mappingJacksonValue;
     }
 
-    @GetMapping(path = "/employee/{employeeID}")
+    @GetMapping(path = "/jpa/employee/{employeeID}")
     public MappingJacksonValue get(@PathVariable int employeeID) {
 
-        Optional<JEmployee> employeeByID = jEmployeeRepository.findById(employeeID);
-        if (!employeeByID.isPresent()) {
+        Optional<JEmployee> employeeByID = jeEmployeeService.get(employeeID);
+
+        if (employeeByID==null || !employeeByID.isPresent()) {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 
@@ -64,10 +67,10 @@ public class EmployeeResource {
      * input - details of employee
      * output - HTTPStatus of CREATED & Return URI for the employee created
      */
-    @PostMapping(path = "/employee")
+    @PostMapping(path = "/jpa/employee")
     public ResponseEntity<Object> post(@Valid @RequestBody JEmployee employee) {
 
-        JEmployee newEmployee = jEmployeeRepository.save(employee);
+        JEmployee newEmployee = jeEmployeeService.post(employee);
 
         /*
          * Set Response status to Created
@@ -82,10 +85,10 @@ public class EmployeeResource {
         return ResponseEntity.created(newEmployeeURI).build();
     }
 
-    @DeleteMapping(path = "/employee/{employeeID}")
+    @DeleteMapping(path = "/jpa/employee/{employeeID}")
     public ResponseEntity<Object> delete(@PathVariable int employeeID) {
 
-        jEmployeeRepository.deleteById(employeeID);
+        jeEmployeeService.delete(employeeID);
         return ResponseEntity.noContent().build();
     }
 }

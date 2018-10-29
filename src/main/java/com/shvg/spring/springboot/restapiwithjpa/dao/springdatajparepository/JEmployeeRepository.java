@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapiwithjpa.jpa.repository;
+package com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
 import org.springframework.data.jpa.repository.JpaRepository;

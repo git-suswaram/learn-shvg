@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapiwithjpa.jpa.dao;
+package com.shvg.spring.springboot.restapiwithjpa.dao.jpa;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 import org.springframework.stereotype.Repository;

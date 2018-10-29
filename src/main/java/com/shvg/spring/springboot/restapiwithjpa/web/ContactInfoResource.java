@@ -2,7 +2,7 @@ package com.shvg.spring.springboot.restapiwithjpa.web;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JContactInfo;
 import com.shvg.spring.springboot.restapiwithjpa.exception.ContactInfoNotFoundException;
-import com.shvg.spring.springboot.restapiwithjpa.jpa.repository.JContactInfoRepository;
+import com.shvg.spring.springboot.restapiwithjpa.service.JContactInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -21,24 +21,24 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RestController
 public class ContactInfoResource {
 
-    private final JContactInfoRepository jContactInfoRepository;
-
     @Autowired
-    public ContactInfoResource(JContactInfoRepository jContactInfoRepository) {
-        this.jContactInfoRepository = jContactInfoRepository;
+    private final JContactInfoService jContactInfoService;
+
+    public ContactInfoResource(JContactInfoService jContactInfoService) {
+        this.jContactInfoService = jContactInfoService;
     }
 
-    @GetMapping(path = "/contactInfo")
+    @GetMapping(path = "/jpa/contactInfo")
     public List<JContactInfo> get() {
 
-        return jContactInfoRepository.findAll();
+        return jContactInfoService.get();
     }
 
-    @GetMapping(path = "/contactInfo/{contactInfoID}")
+    @GetMapping(path = "/jpa/contactInfo/{contactInfoID}")
     public Resource<JContactInfo> get(@PathVariable int contactInfoID) {
 
-        Optional<JContactInfo> contactInfoByID = jContactInfoRepository.findById(contactInfoID);
-        if (!contactInfoByID.isPresent()) {
+        Optional<JContactInfo> contactInfoByID = jContactInfoService.get(contactInfoID);
+        if (contactInfoByID==null || !contactInfoByID.isPresent()) {
             throw new ContactInfoNotFoundException("Failed to retrieve. ContactInfo Not Found, ID = " + contactInfoID);
         }
 
@@ -54,10 +54,10 @@ public class ContactInfoResource {
      * input - details of contactInfo
      * output - HTTPStatus of CREATED & Return URI for the contactInfo created
      */
-    @PostMapping(path = "/contactInfo")
+    @PostMapping(path = "/jpa/contactInfo")
     public ResponseEntity<Object> post(@Valid @RequestBody JContactInfo contactInfo) {
 
-        JContactInfo newContactInfo = jContactInfoRepository.save(contactInfo);
+        JContactInfo newContactInfo = jContactInfoService.post(contactInfo);
 
         /*
          * Set Response status to Created
@@ -72,10 +72,10 @@ public class ContactInfoResource {
         return ResponseEntity.created(newContactInfoURI).build();
     }
 
-    @DeleteMapping(path = "/contactInfo/{contactInfoID}")
+    @DeleteMapping(path = "/jpa/contactInfo/{contactInfoID}")
     public ResponseEntity<Object> delete(@PathVariable int contactInfoID) {
 
-        jContactInfoRepository.deleteById(contactInfoID);
+        jContactInfoService.delete(contactInfoID);
         return ResponseEntity.noContent().build();
     }
 }

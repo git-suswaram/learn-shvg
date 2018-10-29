@@ -1,17 +1,18 @@
-package com.shvg.spring.springboot.restapiwithjpa.jpa.dao;
+package com.shvg.spring.springboot.restapiwithjpa.service;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface JDepartmentService {
 
     List<JDepartment> get();
 
-    JDepartment get(int departmentID);
+    Optional<JDepartment> get(int departmentID);
 
     JDepartment post(JDepartment department);
 
-    JDepartment delete(int departmentID);
+    void delete(int departmentID);
 
 }

@@ -1,5 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.exception;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,14 @@ public class CustomResponseEntityExceptionHandler
                 new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 
         return new ResponseEntity<>(exceptionResponse, HttpStatus.EXPECTATION_FAILED);
+    }
+
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public final ResponseEntity<Object> handleEmptyResultDataAccessException(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.PRECONDITION_FAILED);
     }
 
     @ExceptionHandler(Exception.class)

@@ -2,8 +2,9 @@ package com.shvg.spring.springboot.restapiwithjpa.web;
 
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 import com.shvg.spring.springboot.restapiwithjpa.exception.DepartmentNotFoundException;
-import com.shvg.spring.springboot.restapiwithjpa.jpa.repository.JDepartmentRepository;
+import com.shvg.spring.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -22,20 +23,21 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RestController
 public class DepartmentResource {
 
-    private final JDepartmentRepository jDepartmentRepository;
+    @Autowired
+    private final JDepartmentService jDepartmentService;
+
     private static final String ALL_DEPARTMENTS = "all-departments";
 
-    @Autowired
-    public DepartmentResource(JDepartmentRepository jDepartmentRepository) {
-        this.jDepartmentRepository = jDepartmentRepository;
+    public DepartmentResource(JDepartmentService jDepartmentService) {
+        this.jDepartmentService = jDepartmentService;
     }
 
-    @GetMapping(path = "/department", produces = "application/json")
+    @GetMapping(path = "/jpa/department", produces = "application/json")
     public Resources<JDepartment> get() {
 
-        List<JDepartment> departments = jDepartmentRepository.findAll();
+        List<JDepartment> departments = jDepartmentService.get();
 
-        //HATEOAS : all-users, SERVER_PATH + "/users"
+        //HATEOAS : all-users, SERVER_PATH + "/jpa/users"
         Resources<JDepartment> resources = new Resources<>(departments);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
         resources.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
@@ -44,15 +46,16 @@ public class DepartmentResource {
     }
 
 
-    @GetMapping(path = "/department/{departmentID}")
+    @GetMapping(path = "/jpa/department/{departmentID}")
     public Resource<JDepartment> get(@PathVariable int departmentID) {
 
-        Optional<JDepartment> departmentByID = jDepartmentRepository.findById(departmentID);
-        if (!departmentByID.isPresent()) {
+        Optional<JDepartment> departmentByID = jDepartmentService.get(departmentID);
+
+        if (departmentByID==null || !departmentByID.isPresent()) {
             throw new DepartmentNotFoundException("Failed to retrieve. Department Not Found, ID = " + departmentID);
         }
 
-        //HATEOAS : all-users, SERVER_PATH + "/users"
+        //HATEOAS : all-users, SERVER_PATH + "/jpa/users"
         Resource<JDepartment> resource = new Resource(departmentByID);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
         resource.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
@@ -65,12 +68,12 @@ public class DepartmentResource {
      * output - HTTPStatus of CREATED & Return URI for the department created
      */
 
-    @PostMapping(path = "/department", produces = "application/json")
+    @PostMapping(path = "/jpa/department", produces = "application/json")
     public ResponseEntity<Object> post(@Valid @RequestBody JDepartment department) {
 
-        JDepartment newDepartment = jDepartmentRepository.save(department);
+        JDepartment newDepartment = jDepartmentService.post(department);
 
-        //HATEOAS : all-users, SERVER_PATH + "/users"
+        //HATEOAS : all-users, SERVER_PATH + "/jpa/users"
         Resource<JDepartment> resource = new Resource(newDepartment);
         ControllerLinkBuilder linkToAllDepts = linkTo(methodOn(this.getClass()).get());
         resource.add(linkToAllDepts.withRel(ALL_DEPARTMENTS));
@@ -88,10 +91,10 @@ public class DepartmentResource {
         return ResponseEntity.created(newDepartmentURI).body(resource);
     }
 
-    @DeleteMapping(path = "/department/{departmentID}")
-    public ResponseEntity<Object> delete(@PathVariable int departmentID) {
+    @DeleteMapping(path = "/jpa/department/{departmentID}")
+    public ResponseEntity<Object> delete(@PathVariable int departmentID) throws EmptyResultDataAccessException {
 
-        jDepartmentRepository.deleteById(departmentID);
+        jDepartmentService.delete(departmentID);
         return ResponseEntity.noContent().build();
     }
 }
