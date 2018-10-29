@@ -1,7 +1,7 @@
-package com.shvg.spring.springboot.restapi.service.dao;
+package com.shvg.spring.springboot.restapiwithjpa.jpa.dao;
 
-import com.shvg.spring.springboot.restapi.entity.JDepartment;
-import com.shvg.spring.springboot.restapi.service.JDepartmentService;
+import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
+import com.shvg.spring.springboot.restapiwithjpa.jpa.JDepartmentService;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

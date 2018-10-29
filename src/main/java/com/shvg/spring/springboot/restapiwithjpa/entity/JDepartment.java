@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapi.entity;
+package com.shvg.spring.springboot.restapiwithjpa.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +16,7 @@ public class JDepartment {
     private int headOfDepartmentEmpID;
 
     /**
-     * Setter Methods and  Default no-argument constructor is required for processing REST requests
+     * Setter Methods and  Default no-argument constructor is required for JPA
      */
     public JDepartment() {
     }

@@ -1,6 +1,6 @@
-package com.shvg.spring.springboot.restapi.service;
+package com.shvg.spring.springboot.restapiwithjpa.jpa;
 
-import com.shvg.spring.springboot.restapi.entity.JDepartment;
+import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 
 import java.util.List;
 

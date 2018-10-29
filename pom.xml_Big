@@ -113,6 +113,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-couchbase</artifactId>
         </dependency>
+
+        <!--
+        URL to access h2 Console: http://localhost:8080/h2-console
+        dbURL                   : jdbc:h2:mem:testdb
+        Default User            : sa (no password)
+         -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
