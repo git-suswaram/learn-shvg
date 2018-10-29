@@ -32,7 +32,8 @@ public class EmployeeResource {
 
         List<JEmployee> employees = jEmployeeRepository.findAll();
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
         FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employees);
@@ -49,7 +50,8 @@ public class EmployeeResource {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "dateOfBirth");
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter
+                .filterOutAllExcept("employeeID", "firstName", "lastName", "dateOfBirth");
         FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
         MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employeeByID);
@@ -82,9 +84,8 @@ public class EmployeeResource {
 
     @DeleteMapping(path = "/employee/{employeeID}")
     public ResponseEntity<Object> delete(@PathVariable int employeeID) {
+
         jEmployeeRepository.deleteById(employeeID);
         return ResponseEntity.noContent().build();
-
     }
-
 }

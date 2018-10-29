@@ -92,9 +92,6 @@ public class DepartmentResource {
     public ResponseEntity<Object> delete(@PathVariable int departmentID) {
 
         jDepartmentRepository.deleteById(departmentID);
-
         return ResponseEntity.noContent().build();
-
     }
-
 }

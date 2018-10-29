@@ -76,9 +76,6 @@ public class ContactInfoResource {
     public ResponseEntity<Object> delete(@PathVariable int contactInfoID) {
 
         jContactInfoRepository.deleteById(contactInfoID);
-        
         return ResponseEntity.noContent().build();
-
     }
-
 }
