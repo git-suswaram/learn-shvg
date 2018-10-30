@@ -12,6 +12,7 @@ public class JPrimitiveDataImpl implements JPrimitiveDataService {
 
     @Autowired
     JPrimitiveDataRepository jPrimitiveDataRepository;
+
     @Autowired
     Calculate calculate;
 

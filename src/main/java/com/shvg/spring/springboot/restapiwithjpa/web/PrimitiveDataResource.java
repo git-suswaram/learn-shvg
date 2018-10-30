@@ -1,6 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.web;
 
-import com.shvg.spring.springboot.restapiwithjpa.basedata.PrimitiveTypeData;
+import com.shvg.spring.springboot.restapiwithjpa.basedata.JPrimitiveData;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class PrimitiveDataResource {
 
     @GetMapping("/jpa/getArray")
     public int[] get(){
-        return PrimitiveTypeData.getIntArrayPayloads();
+        return JPrimitiveData.getIntArrayPayloads();
     }
 
     @PostMapping(path = "/jpa/sum")
