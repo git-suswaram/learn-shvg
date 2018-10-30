@@ -22,22 +22,34 @@ public class PrimitiveDataResource {
         jPrimitiveDataService = null;
     }
 
-    public PrimitiveDataResource(JPrimitiveDataService jPrimitiveDataService) {
+    /*public PrimitiveDataResource(JPrimitiveDataService jPrimitiveDataService) {
         this.jPrimitiveDataService = jPrimitiveDataService;
-    }
+    }*/
 
     @GetMapping("/jpa/getArray")
-    public int[] get(){
+    public int[] get() {
         return JPrimitiveData.getIntArrayPayloads();
     }
 
-    @PostMapping(path = "/jpa/sum")
-    public int post(@RequestBody int[] numbers) {
+    @PostMapping(path = "/jpa/getCustomData")
+    public Object post(@RequestBody String typeOfData) {
 
-        logger.info("Entered /jpa/sum}");
-        int calculateSum = jPrimitiveDataService.calculateSum(numbers);
-        logger.info("Value of calculateSum: {}",calculateSum);
+        logger.info("Entered /jpa/getCustomData}");
+        Object requestedData = jPrimitiveDataService.getRequestedData(typeOfData);
+        logger.info("Value of requestedData: {}", requestedData);
 
-        return calculateSum;
+        return requestedData;
+    }
+
+    @PostMapping(path = "/jpa/customSum")
+    public int post2(@RequestBody String typeOfData) {
+
+        logger.info("Entered /jpa/getCustomData}");
+        logger.info("typeOfData: {}", typeOfData);
+
+        int calculatedCustomSum = jPrimitiveDataService.calculateCustomSum(typeOfData);
+        logger.info("Value of calculatedCustomSum: {}", calculatedCustomSum);
+
+        return calculatedCustomSum;
     }
 }
