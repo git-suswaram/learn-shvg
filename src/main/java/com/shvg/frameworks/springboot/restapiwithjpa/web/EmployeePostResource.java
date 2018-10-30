@@ -28,8 +28,8 @@ public class EmployeePostResource {
     private static Logger logger = LoggerFactory.getLogger(EmployeePostResource.class);
 
     public EmployeePostResource() {
-        this.jPostService=null;
-        this.jeEmployeeService=null;
+        this.jPostService = null;
+        this.jeEmployeeService = null;
     }
 
     public EmployeePostResource(JEmployeeService jeEmployeeService, JPostService jPostService) {
@@ -43,7 +43,7 @@ public class EmployeePostResource {
         logger.info("Entering /jpa/employee/{id}/posts");
         Optional<JEmployee> employeeByID = jeEmployeeService.get(employeeID);
 
-        if (employeeByID==null || !employeeByID.isPresent()) {
+        if (!employeeByID.isPresent()) {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 
@@ -56,7 +56,7 @@ public class EmployeePostResource {
         logger.info("Entering /jpa/employee/{employeeId}/posts");
         Optional<JEmployee> employeeByID = jeEmployeeService.get(employeeID);
 
-        if (employeeByID==null || !employeeByID.isPresent()) {
+        if (!employeeByID.isPresent()) {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 

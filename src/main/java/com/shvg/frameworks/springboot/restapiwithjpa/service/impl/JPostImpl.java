@@ -4,7 +4,6 @@ import com.shvg.frameworks.springboot.restapiwithjpa.dao.springdatajparepository
 import com.shvg.frameworks.springboot.basedata.entity.JPost;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JPostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class JPostImpl implements JPostService {
     }
 
     //deleteOne
-    public void delete(int departmentID) throws EmptyResultDataAccessException {
+    public void delete(int departmentID) {
 
         jPostRepository.deleteById(departmentID);
     }

@@ -14,9 +14,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * TODO: Define purpose of ControllerAdvice
- **/
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler

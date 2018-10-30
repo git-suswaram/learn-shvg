@@ -22,10 +22,6 @@ public class PrimitiveDataResource {
         jPrimitiveDataService = null;
     }
 
-    /*public PrimitiveDataResource(JPrimitiveDataService jPrimitiveDataService) {
-        this.jPrimitiveDataService = jPrimitiveDataService;
-    }*/
-
     @GetMapping("/jpa/getArray")
     public int[] get() {
         return JPrimitiveData.getIntArrayPayloads();

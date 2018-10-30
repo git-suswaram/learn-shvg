@@ -18,10 +18,9 @@ public class JPost {
     @JsonIgnore
     private JEmployee jEmployee;
 
-    /**
-     * Default no-argument constructor is required for JPA
-     */
+
     public JPost() {
+        //Default no-argument constructor is required for JPA
     }
 
     public int getId() {

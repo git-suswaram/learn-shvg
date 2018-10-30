@@ -1,10 +1,9 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.service.impl;
 
-import com.shvg.frameworks.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
 import com.shvg.frameworks.springboot.basedata.entity.JDepartment;
+import com.shvg.frameworks.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class JDepartmentImpl implements JDepartmentService {
     }
 
     //deleteOne
-    public void delete(int departmentID) throws EmptyResultDataAccessException {
+    public void delete(int departmentID) {
 
         jDepartmentRepository.deleteById(departmentID);
     }

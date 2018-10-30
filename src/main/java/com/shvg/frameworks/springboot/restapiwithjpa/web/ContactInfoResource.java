@@ -38,7 +38,7 @@ public class ContactInfoResource {
     public Resource<JContactInfo> get(@PathVariable int contactInfoID) {
 
         Optional<JContactInfo> contactInfoByID = jContactInfoService.get(contactInfoID);
-        if (contactInfoByID==null || !contactInfoByID.isPresent()) {
+        if (!contactInfoByID.isPresent()) {
             throw new ContactInfoNotFoundException("Failed to retrieve. ContactInfo Not Found, ID = " + contactInfoID);
         }
 

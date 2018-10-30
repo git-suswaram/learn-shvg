@@ -54,7 +54,7 @@ public class EmployeeResource {
 
         Optional<JEmployee> employeeByID = jeEmployeeService.get(employeeID);
 
-        if (employeeByID == null || !employeeByID.isPresent()) {
+        if (!employeeByID.isPresent()) {
             throw new EmployeeNotFoundException("Failed to retrieve. Employee Not Found, ID = " + employeeID);
         }
 

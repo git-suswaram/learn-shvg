@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -17,13 +18,11 @@ public class JDepartmentDAOImpl implements JDepartmentService {
 
     @Override
     public List<JDepartment> get() {
-        //TODO: Implement
-        return null;
+        return Collections.emptyList();
     }
 
     @Override
     public JDepartment get(int departmentID) {
-        //TODO: Implement
         return null;
     }
 
@@ -36,7 +35,6 @@ public class JDepartmentDAOImpl implements JDepartmentService {
 
     @Override
     public JDepartment delete(int departmentID) {
-        //TODO: Implement
         return null;
     }
 

@@ -4,7 +4,6 @@ import com.shvg.frameworks.springboot.basedata.entity.JDepartment;
 import com.shvg.frameworks.springboot.restapiwithjpa.exception.DepartmentNotFoundException;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -51,7 +50,7 @@ public class DepartmentResource {
 
         Optional<JDepartment> departmentByID = jDepartmentService.get(departmentID);
 
-        if (departmentByID==null || !departmentByID.isPresent()) {
+        if (!departmentByID.isPresent()) {
             throw new DepartmentNotFoundException("Failed to retrieve. Department Not Found, ID = " + departmentID);
         }
 
@@ -92,7 +91,7 @@ public class DepartmentResource {
     }
 
     @DeleteMapping(path = "/jpa/department/{departmentID}")
-    public ResponseEntity<Object> delete(@PathVariable int departmentID) throws EmptyResultDataAccessException {
+    public ResponseEntity<Object> delete(@PathVariable int departmentID) {
 
         jDepartmentService.delete(departmentID);
         return ResponseEntity.noContent().build();
