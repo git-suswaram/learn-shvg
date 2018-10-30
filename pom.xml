@@ -40,7 +40,7 @@
         <!-- Spring Security -->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>frameworks-boot-starter-security</artifactId>
         </dependency>-->
 
         <!-- HATEOAS  : {H}ypermedia {A}s {T}he {E}ngine {O}f {A}pplication {S}tate-->
