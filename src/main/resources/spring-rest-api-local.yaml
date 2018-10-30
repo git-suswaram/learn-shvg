@@ -1,5 +1,5 @@
 logging   :
-  file : C:\\temp\\intelliJ_logs\\frameworks-rest-api.log
+  file : C:\\temp\\intelliJ_logs\\springboot-rest-api.log
   level:
     com : INFO
     org :
@@ -19,7 +19,7 @@ spring    :
     active : ${profile:local}
     include: $(ENV_NAME:local}
   application:
-    name: frameworks-rest-api
+    name: springboot-rest-api
   output     :
     ansi:
       enabled: always
