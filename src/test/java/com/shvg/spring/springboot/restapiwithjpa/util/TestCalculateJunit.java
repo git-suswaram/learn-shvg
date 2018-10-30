@@ -1,5 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.util;
 
+import com.shvg.spring.basedata.util.Calculate;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

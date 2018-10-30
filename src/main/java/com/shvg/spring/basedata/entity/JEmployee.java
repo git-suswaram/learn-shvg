@@ -1,42 +1,50 @@
-package com.shvg.spring.springboot.restapiwithjpa.entity;
+package com.shvg.spring.basedata.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Component
 @Entity
-public class JPrimitiveType {
+@JsonFilter("FilterEmployeeInfo")
+public class JEmployee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+
+    @Size(min = 2, message = "FirstName should have minimum of 2 characters")
     private String firstName;
     private String lastName;
     private String fullName;
+    @Past(message = "Date of Birth should be either current day or in the past")
     private LocalDate dateOfBirth;
     private String department;
     private String jobTitle;
     private Double netAnnualIncome;
 
+    @OneToMany(mappedBy = "jEmployee")
+    private List<JPost> posts;
+
     /**
      * Default no-argument constructor is required for JPA
      */
-    public JPrimitiveType() {
+    public JEmployee() {
     }
 
-    public JPrimitiveType(String firstName, String lastName, String department) {
+    public JEmployee(String firstName, String lastName, String department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
     }
 
-    public JPrimitiveType(String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
+    public JEmployee(String firstName, String lastName, LocalDate dateOfBirth, String department, String jobTitle, Double netAnnualIncome) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -115,15 +123,23 @@ public class JPrimitiveType {
         setNetAnnualIncome(newNetAnnualIncome);
     }
 
-    public int compareTo(JPrimitiveType employee) {
+    public int compareTo(JEmployee employee) {
         return lastName.compareTo(employee.lastName);
+    }
+
+    public List<JPost> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<JPost> posts) {
+        this.posts = posts;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        JPrimitiveType employee = (JPrimitiveType) o;
+        JEmployee employee = (JEmployee) o;
         return Objects.equals(getId(), employee.getId()) &&
                 Objects.equals(getFirstName(), employee.getFirstName()) &&
                 Objects.equals(getLastName(), employee.getLastName()) &&

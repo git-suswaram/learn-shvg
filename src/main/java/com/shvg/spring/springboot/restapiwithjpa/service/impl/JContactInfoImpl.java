@@ -1,6 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 
-import com.shvg.spring.springboot.restapiwithjpa.entity.JContactInfo;
+import com.shvg.spring.basedata.entity.JContactInfo;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JContactInfoRepository;
 import com.shvg.spring.springboot.restapiwithjpa.service.JContactInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

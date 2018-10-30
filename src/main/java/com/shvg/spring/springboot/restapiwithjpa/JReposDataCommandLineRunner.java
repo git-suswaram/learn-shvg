@@ -1,9 +1,9 @@
-package com.shvg.spring.springboot.restapiwithjpa.basedata;
+package com.shvg.spring.springboot.restapiwithjpa;
 
-import com.shvg.spring.springboot.restapiwithjpa.entity.JContactInfo;
-import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
-import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
-import com.shvg.spring.zResearch.helper.HelperImpl;
+import com.shvg.spring.basedata.entity.JContactInfo;
+import com.shvg.spring.basedata.entity.JDepartment;
+import com.shvg.spring.basedata.entity.JEmployee;
+import com.shvg.spring.basedata.util.HelperImpl;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JContactInfoRepository;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JEmployeeRepository;
@@ -13,18 +13,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import static com.shvg.spring.springboot.restapiwithjpa.basedata.JContactInfoData.getImmutableListOfContactInfos;
-import static com.shvg.spring.springboot.restapiwithjpa.basedata.JDepartmentData.getImmutableListOfJDepartments;
-import static com.shvg.spring.springboot.restapiwithjpa.basedata.JEmployeeData.getImmutableListOfJExecutives;
+import static com.shvg.spring.basedata.data.JContactInfoData.getImmutableListOfContactInfos;
+import static com.shvg.spring.basedata.data.JDepartmentData.getImmutableListOfJDepartments;
+import static com.shvg.spring.basedata.data.JEmployeeData.getImmutableListOfJExecutives;
 
 @Component
 public class JReposDataCommandLineRunner implements CommandLineRunner {
 
     @Autowired
-    JDepartmentRepository jDepartmentRepository;
+    JEmployeeRepository jEmployeeRepository;
 
     @Autowired
-    JEmployeeRepository jEmployeeRepository;
+    JDepartmentRepository jDepartmentRepository;
 
     @Autowired
     JContactInfoRepository jContactInfoRepository;
@@ -34,14 +34,14 @@ public class JReposDataCommandLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        for (JDepartment jDepartmentEntity : getImmutableListOfJDepartments()) {
-            JDepartment insertedDepartment = jDepartmentRepository.save(jDepartmentEntity);
-            logger.info("\nInserted Department Using JPA Repository: {}", insertedDepartment);
-        }
 
         for (JEmployee jEmployeeEntity : getImmutableListOfJExecutives()) {
             JEmployee insertedEmployee = jEmployeeRepository.save(jEmployeeEntity);
             logger.info("\nInserted Employee Using JPA Repository: {}", insertedEmployee);
+        }
+        for (JDepartment jDepartmentEntity : getImmutableListOfJDepartments()) {
+            JDepartment insertedDepartment = jDepartmentRepository.save(jDepartmentEntity);
+            logger.info("\nInserted Department Using JPA Repository: {}", insertedDepartment);
         }
 
         for (JContactInfo jContactInfoEntity : getImmutableListOfContactInfos()) {

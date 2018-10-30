@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapi.helper;
+package com.shvg.spring.basedata.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

@@ -1,9 +1,11 @@
-package com.shvg.spring.springboot.restapiwithjpa.entity;
+package com.shvg.spring.basedata.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
+@Component
 @Entity
 public class JPost {
 

@@ -1,7 +1,7 @@
 package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
-import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
+import com.shvg.spring.basedata.entity.JDepartment;
 import com.shvg.spring.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

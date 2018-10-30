@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapiwithjpa.util;
+package com.shvg.spring.basedata.util;
 
 public class Calculate {
 

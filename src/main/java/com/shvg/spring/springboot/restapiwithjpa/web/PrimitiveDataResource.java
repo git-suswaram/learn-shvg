@@ -1,6 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.web;
 
-import com.shvg.spring.springboot.restapiwithjpa.basedata.JPrimitiveData;
+import com.shvg.spring.basedata.data.JPrimitiveData;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

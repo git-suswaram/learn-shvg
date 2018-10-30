@@ -1,6 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 
-import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
+import com.shvg.spring.basedata.entity.JEmployee;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JEmployeeRepository;
 import com.shvg.spring.springboot.restapiwithjpa.service.JEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;

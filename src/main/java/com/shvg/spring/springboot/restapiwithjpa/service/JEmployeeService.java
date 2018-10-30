@@ -1,6 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.service;
 
-import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
+import com.shvg.spring.basedata.entity.JEmployee;
 
 import java.util.List;
 import java.util.Optional;

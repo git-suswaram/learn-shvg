@@ -1,5 +1,6 @@
 package com.shvg.spring.springboot.restapiwithjpa.util;
 
+import com.shvg.spring.basedata.util.Calculate;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataCustomFetch;
 import com.shvg.spring.springboot.restapiwithjpa.service.impl.JPrimitiveDataImpl;
 import org.junit.Test;

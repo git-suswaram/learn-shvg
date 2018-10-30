@@ -1,6 +1,6 @@
-package com.shvg.spring.springboot.restapiwithjpa.basedata;
+package com.shvg.spring.basedata.data;
 
-import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
+import com.shvg.spring.basedata.entity.JDepartment;
 
 import java.util.ArrayList;
 import java.util.Arrays;

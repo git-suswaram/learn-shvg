@@ -1,12 +1,12 @@
-package com.shvg.spring.springboot.restapiwithjpa.basedata;
+package com.shvg.spring.zResearch.basedata;
 
 
 import java.util.Arrays;
 import java.util.List;
 
-public class JPrimitiveData {
+public class PrimitiveTypeData {
 
-    private JPrimitiveData() {
+    private PrimitiveTypeData() {
         throw new IllegalStateException("Utility class");
     }
 
@@ -14,14 +14,14 @@ public class JPrimitiveData {
             {
                     1, 2, 3, 4, 5
             };
-    private static List<int[]> listOfInts = Arrays.asList(intArrayPayloads);
+    private static List<int[]> listOfints = Arrays.asList(intArrayPayloads);
 
 
     private static Integer[] integerArrayPayloads =
             {
                     1, 2, 3, 4, 5
             };
-    private static List<Integer> listOfIntegers = Arrays.asList(integerArrayPayloads);
+    private static List<Integer> listOfintegers = Arrays.asList(integerArrayPayloads);
 
 
     private static String[] stringArrayPayloads =
@@ -34,16 +34,16 @@ public class JPrimitiveData {
         return intArrayPayloads;
     }
 
-    public static List<int[]> getListOfInts() {
-        return listOfInts;
+    public static List<int[]> getListOfints() {
+        return listOfints;
     }
 
     public static Integer[] getIntegerArrayPayloads() {
         return integerArrayPayloads;
     }
 
-    public static List<Integer> getListOfIntegers() {
-        return listOfIntegers;
+    public static List<Integer> getListOfintegers() {
+        return listOfintegers;
     }
 
     public static String[] getStringArrayPayloads() {

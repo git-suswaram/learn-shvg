@@ -1,7 +1,7 @@
 package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JPostRepository;
-import com.shvg.spring.springboot.restapiwithjpa.entity.JPost;
+import com.shvg.spring.basedata.entity.JPost;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;

@@ -3,7 +3,7 @@ package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JPrimitiveDataRepository;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataCustomFetch;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataService;
-import com.shvg.spring.springboot.restapiwithjpa.util.Calculate;
+import com.shvg.spring.basedata.util.Calculate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

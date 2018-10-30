@@ -3,7 +3,7 @@ package com.shvg.spring.springboot.restapiwithjpa.service.impl;
 import com.shvg.spring.springboot.restapiwithjpa.service.JPrimitiveDataCustomFetch;
 import org.springframework.stereotype.Component;
 
-import static com.shvg.spring.springboot.restapiwithjpa.basedata.JPrimitiveData.getIntArrayPayloads;
+import static com.shvg.spring.basedata.data.JPrimitiveData.getIntArrayPayloads;
 
 @Component
 public class JPrimitiveDataCustomFetchImpl implements JPrimitiveDataCustomFetch {
