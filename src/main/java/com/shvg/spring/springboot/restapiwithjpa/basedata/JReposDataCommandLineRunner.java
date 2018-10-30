@@ -3,7 +3,7 @@ package com.shvg.spring.springboot.restapiwithjpa.basedata;
 import com.shvg.spring.springboot.restapiwithjpa.entity.JContactInfo;
 import com.shvg.spring.springboot.restapiwithjpa.entity.JDepartment;
 import com.shvg.spring.springboot.restapiwithjpa.entity.JEmployee;
-import com.shvg.spring.springboot.restapiwithjpa.helper.HelperImpl;
+import com.shvg.spring.zResearch.helper.HelperImpl;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JContactInfoRepository;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
 import com.shvg.spring.springboot.restapiwithjpa.dao.springdatajparepository.JEmployeeRepository;

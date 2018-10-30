@@ -1,4 +1,4 @@
-package com.shvg.spring.springboot.restapiwithjpa.helper;
+package com.shvg.spring.zResearch.helper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
