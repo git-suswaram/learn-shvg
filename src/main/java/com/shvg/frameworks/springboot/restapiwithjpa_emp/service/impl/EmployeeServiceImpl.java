@@ -30,12 +30,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<JEEmployee> post(List<JEEmployee> JEEmployeeList) {
+    public List<JEEmployee> post(List<JEEmployee> jeEmployeeList) {
 
-        for(com.shvg.frameworks.springboot.restapiwithjpa_emp.entity.JEEmployee JEEmployee : JEEmployeeList){
-            employeeRepository.save(JEEmployee);
+        for(JEEmployee jeEmployee : jeEmployeeList){
+            employeeRepository.save(jeEmployee);
         }
-        return JEEmployeeList;
+        return jeEmployeeList;
     }
 
     //deleteOne
