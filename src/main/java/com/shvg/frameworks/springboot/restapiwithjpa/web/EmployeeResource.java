@@ -27,17 +27,9 @@ public class EmployeeResource {
      private String domainUrl;
  */
     @Autowired
-    private final JEmployeeService jeEmployeeService;
+    private JEmployeeService jeEmployeeService;
 
     private static Logger logger = LoggerFactory.getLogger(EmployeeResource.class);
-
-    public EmployeeResource() {
-        jeEmployeeService = null;
-    }
-
-    public EmployeeResource(JEmployeeService jeEmployeeService) {
-        this.jeEmployeeService = jeEmployeeService;
-    }
 
     @GetMapping(path = {"/jpa/employees", "/jpa/employees/count"})
     public MappingJacksonValue get() throws Exception {

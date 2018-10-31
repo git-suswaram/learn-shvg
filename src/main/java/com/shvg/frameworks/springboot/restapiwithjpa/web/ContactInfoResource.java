@@ -22,11 +22,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class ContactInfoResource {
 
     @Autowired
-    private final JContactInfoService jContactInfoService;
-
-    public ContactInfoResource(JContactInfoService jContactInfoService) {
-        this.jContactInfoService = jContactInfoService;
-    }
+    private JContactInfoService jContactInfoService;
 
     @GetMapping(path = "/jpa/contactInfo")
     public List<JContactInfo> get() {

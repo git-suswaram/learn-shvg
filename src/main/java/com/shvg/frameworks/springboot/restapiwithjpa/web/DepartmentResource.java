@@ -23,13 +23,9 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class DepartmentResource {
 
     @Autowired
-    private final JDepartmentService jDepartmentService;
+    private JDepartmentService jDepartmentService;
 
     private static final String ALL_DEPARTMENTS = "all-departments";
-
-    public DepartmentResource(JDepartmentService jDepartmentService) {
-        this.jDepartmentService = jDepartmentService;
-    }
 
     @GetMapping(path = "/jpa/department", produces = "application/json")
     public Resources<JDepartment> get() {

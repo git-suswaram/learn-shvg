@@ -25,17 +25,11 @@ public class TestCalculateMock_Simplify2 {
     @Mock
     JPrimitiveDataCustomFetch mockJPrimitiveDataCustomFetch;
 
-
-    /**
-     * When using @InjectMocks and @Mock, mockito automatically takes care of setting the mocks.
-     */
-
-    /*
+    /*When using @InjectMocks and @Mock, mockito automatically takes care of setting the mocks.
     @Before
     public void before(){
         jPrimitiveDataService.setJPrimitiveDataCustomFetch(mockJPrimitiveDataCustomFetch);
-    }
-    */
+    }*/
 
     @Test
     public void calculateSumUsingMockDataService_basic() {

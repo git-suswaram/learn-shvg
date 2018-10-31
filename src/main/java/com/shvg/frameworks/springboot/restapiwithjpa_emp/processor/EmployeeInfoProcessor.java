@@ -16,13 +16,13 @@ import java.util.List;
 public class EmployeeInfoProcessor {
 
     @Autowired
-    private EmployeeService employeeService;
-
-    @Autowired
     private JEEmployee jeEmployee;
 
     @Autowired
     private EmployeeRequest employeeRequest;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     private static Logger logger = LoggerFactory.getLogger(EmployeeInfoProcessor.class);
 

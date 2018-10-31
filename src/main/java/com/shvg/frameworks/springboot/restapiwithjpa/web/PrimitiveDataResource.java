@@ -14,13 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrimitiveDataResource {
 
     @Autowired
-    private final JPrimitiveDataService jPrimitiveDataService;
+    private JPrimitiveDataService jPrimitiveDataService;
 
     private static Logger logger = LoggerFactory.getLogger(PrimitiveDataResource.class);
-
-    public PrimitiveDataResource() {
-        jPrimitiveDataService = null;
-    }
 
     @GetMapping("/jpa/getArray")
     public int[] get() {

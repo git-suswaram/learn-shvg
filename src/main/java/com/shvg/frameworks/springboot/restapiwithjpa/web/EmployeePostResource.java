@@ -20,22 +20,12 @@ import java.util.Optional;
 public class EmployeePostResource {
 
     @Autowired
-    private final JEmployeeService jeEmployeeService;
+    private JEmployeeService jeEmployeeService;
 
     @Autowired
-    private final JPostService jPostService;
+    private JPostService jPostService;
 
     private static Logger logger = LoggerFactory.getLogger(EmployeePostResource.class);
-
-    public EmployeePostResource() {
-        this.jPostService = null;
-        this.jeEmployeeService = null;
-    }
-
-    public EmployeePostResource(JEmployeeService jeEmployeeService, JPostService jPostService) {
-        this.jeEmployeeService = jeEmployeeService;
-        this.jPostService = jPostService;
-    }
 
     @GetMapping(path = "/jpa/employee/{employeeID}/posts")
     public List<JPost> get(@PathVariable Integer employeeID) {

@@ -6,9 +6,9 @@
         "firstName": "John",
         "middleName": "Lane",
         "lastName": "Doe",
-        "displayName": "John Lan Doe",
+        "displayName": "John Lane Doe",
         "employmentDetails": {
-          "employeeId": "1010102",
+          "employeeId": "1010101",
           "jobTitle": "SVP",
           "employeeType": "Full-Time",
           "employmentStatus": "Active",
@@ -37,7 +37,7 @@
         ],
         "compensationDetails": {
           "currentCompensation": {
-            "baseSalary": 1020101000.0,
+            "baseSalary": 1101000.0,
             "minAIABonusPercentage": 30,
             "minAIABonusValue": 300000
           },
@@ -72,14 +72,14 @@
     },
     {
       "employee": {
-        "title": "Mr.",
+        "title": "Ms.",
         "firstName": "Jane",
         "middleName": "Lane",
         "lastName": "Doe",
-        "displayName": "Jane Lan Doe",
+        "displayName": "Jane Lane Doe",
         "employmentDetails": {
           "employeeId": "1010102",
-          "jobTitle": "SVP",
+          "jobTitle": "VP",
           "employeeType": "Full-Time",
           "employmentStatus": "Active",
           "departmentID": 1234,
@@ -107,9 +107,9 @@
         ],
         "compensationDetails": {
           "currentCompensation": {
-            "baseSalary": 1020101000.0,
+            "baseSalary": 30101000.0,
             "minAIABonusPercentage": 30,
-            "minAIABonusValue": 300000
+            "minAIABonusValue": 30000
           },
           "compensationHistory": [
             {

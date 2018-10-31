@@ -36,7 +36,7 @@ public class RestJpaEmployeeApplication {
 
         //Get Spring Application Context and rest configurations from frameworks-rest-api-local.yaml file
         new SpringApplicationBuilder(RestJpaEmployeeApplication.class)
-                .properties("frameworks.config.name=frameworks-rest-api-with-jpa-${ENV_NAME:local}")
+                .properties("frameworks.config.name=spring-rest-api-with-jpa-emp-${ENV_NAME:local}")
                 .run(args);
     }
 
