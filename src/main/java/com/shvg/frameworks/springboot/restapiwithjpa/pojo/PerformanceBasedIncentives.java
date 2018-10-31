@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-public class FixedIncentivesItem{
+public class PerformanceBasedIncentives {
 	private String incentiveType;
 	private int percentage;
 	private int totalValue;
@@ -32,7 +32,7 @@ public class FixedIncentivesItem{
 	@Override
  	public String toString(){
 		return 
-			"FixedIncentivesItem{" + 
+			"PerformanceBasedIncentives{" +
 			"totalValue = '" + totalValue + '\'' + 
 			",percentage = '" + percentage + '\'' + 
 			",incentiveType = '" + incentiveType + '\'' + 

@@ -9,8 +9,8 @@ public class Employee{
 	private String lastName;
 	private String displayName;
 	private EmploymentDetails employmentDetails;
-	private List<EmploymentHistoryItem> employmentHistory;
-	private List<YearlyRatingsItem> yearlyRatings;
+	private List<EmploymentHistory> employmentHistory;
+	private List<YearlyRatings> yearlyRatings;
 	private CompensationDetails compensationDetails;
 
 	public void setEmploymentDetails(EmploymentDetails employmentDetails){
@@ -21,11 +21,11 @@ public class Employee{
 		return employmentDetails;
 	}
 
-	public void setEmploymentHistory(List<EmploymentHistoryItem> employmentHistory){
+	public void setEmploymentHistory(List<EmploymentHistory> employmentHistory){
 		this.employmentHistory = employmentHistory;
 	}
 
-	public List<EmploymentHistoryItem> getEmploymentHistory(){
+	public List<EmploymentHistory> getEmploymentHistory(){
 		return employmentHistory;
 	}
 
@@ -53,11 +53,11 @@ public class Employee{
 		return title;
 	}
 
-	public void setYearlyRatings(List<YearlyRatingsItem> yearlyRatings){
+	public void setYearlyRatings(List<YearlyRatings> yearlyRatings){
 		this.yearlyRatings = yearlyRatings;
 	}
 
-	public List<YearlyRatingsItem> getYearlyRatings(){
+	public List<YearlyRatings> getYearlyRatings(){
 		return yearlyRatings;
 	}
 

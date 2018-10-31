@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-public class EmploymentHistoryItem{
+public class EmploymentHistory {
 	private String employmentStartDate;
 	private String employmentEndDate;
 	private String jobTitle;
@@ -41,7 +41,7 @@ public class EmploymentHistoryItem{
 	@Override
  	public String toString(){
 		return 
-			"EmploymentHistoryItem{" + 
+			"EmploymentHistory{" +
 			"employmentEndDate = '" + employmentEndDate + '\'' + 
 			",departmentDetails = '" + departmentDetails + '\'' + 
 			",employmentStartDate = '" + employmentStartDate + '\'' + 

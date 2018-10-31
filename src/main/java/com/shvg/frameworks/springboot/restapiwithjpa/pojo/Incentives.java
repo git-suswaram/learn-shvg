@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Incentives{
 	private int totalIncentivesValue;
-	private List<FixedIncentivesItem> fixedIncentives;
-	private List<PerformanceBasedIncentivesItem> performanceBasedIncentives;
+	private List<FixedIncentives> fixedIncentives;
+	private List<PerformanceBasedIncentives> performanceBasedIncentives;
 
-	public void setPerformanceBasedIncentives(List<PerformanceBasedIncentivesItem> performanceBasedIncentives){
+	public void setPerformanceBasedIncentives(List<PerformanceBasedIncentives> performanceBasedIncentives){
 		this.performanceBasedIncentives = performanceBasedIncentives;
 	}
 
-	public List<PerformanceBasedIncentivesItem> getPerformanceBasedIncentives(){
+	public List<PerformanceBasedIncentives> getPerformanceBasedIncentives(){
 		return performanceBasedIncentives;
 	}
 
@@ -23,11 +23,11 @@ public class Incentives{
 		return totalIncentivesValue;
 	}
 
-	public void setFixedIncentives(List<FixedIncentivesItem> fixedIncentives){
+	public void setFixedIncentives(List<FixedIncentives> fixedIncentives){
 		this.fixedIncentives = fixedIncentives;
 	}
 
-	public List<FixedIncentivesItem> getFixedIncentives(){
+	public List<FixedIncentives> getFixedIncentives(){
 		return fixedIncentives;
 	}
 

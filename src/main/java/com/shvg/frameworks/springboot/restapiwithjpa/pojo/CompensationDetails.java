@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CompensationDetails{
 	private CurrentCompensation currentCompensation;
-	private List<CompensationHistoryItem> compensationHistory;
+	private List<CompensationHistory> compensationHistory;
 
 	public void setCurrentCompensation(CurrentCompensation currentCompensation){
 		this.currentCompensation = currentCompensation;
@@ -14,11 +14,11 @@ public class CompensationDetails{
 		return currentCompensation;
 	}
 
-	public void setCompensationHistory(List<CompensationHistoryItem> compensationHistory){
+	public void setCompensationHistory(List<CompensationHistory> compensationHistory){
 		this.compensationHistory = compensationHistory;
 	}
 
-	public List<CompensationHistoryItem> getCompensationHistory(){
+	public List<CompensationHistory> getCompensationHistory(){
 		return compensationHistory;
 	}
 

@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-public class YearlyRatingsItem{
+public class YearlyRatings {
 	private int year;
 	private String goal;
 	private String leadership;
@@ -32,7 +32,7 @@ public class YearlyRatingsItem{
 	@Override
  	public String toString(){
 		return 
-			"YearlyRatingsItem{" + 
+			"YearlyRatings{" +
 			"leadership = '" + leadership + '\'' + 
 			",goal = '" + goal + '\'' + 
 			",year = '" + year + '\'' + 

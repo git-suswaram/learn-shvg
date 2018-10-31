@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-public class CompensationHistoryItem{
+public class CompensationHistory {
 	private int year;
 	private int startingSalary;
 	private int salaryIncrementPercentage;
@@ -59,7 +59,7 @@ public class CompensationHistoryItem{
 	@Override
  	public String toString(){
 		return 
-			"CompensationHistoryItem{" + 
+			"CompensationHistory{" +
 			"salaryIncrementValue = '" + salaryIncrementValue + '\'' + 
 			",incentives = '" + incentives + '\'' + 
 			",year = '" + year + '\'' + 
