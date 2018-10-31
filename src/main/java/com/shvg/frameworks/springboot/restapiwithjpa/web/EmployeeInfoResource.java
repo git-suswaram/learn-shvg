@@ -1,6 +1,5 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.web;
 
-import com.shvg.frameworks.springboot.restapiwithjpa.pojo.EmployeeInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa.pojo.EmployeesInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa.processor.EmployeeInfoProcessor;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JEmployeeService;
@@ -28,7 +27,6 @@ public class EmployeeInfoResource {
     public EmployeeInfoResource() {
         this.jeEmployeeService = null;
         this.employeeInfoProcessor=null;
-
     }
 
     public EmployeeInfoResource(JEmployeeService jeEmployeeService, EmployeeInfoProcessor employeeInfoProcessor) {
@@ -36,17 +34,10 @@ public class EmployeeInfoResource {
         this.employeeInfoProcessor = employeeInfoProcessor;
     }
 
-
-    @PostMapping(path = "/jpa/employeeinfo")
-    public void post(@Valid @RequestBody EmployeeInfo employeesInfo) {
-
-        employeeInfoProcessor.post(employeesInfo);
-    }
-
-    @PostMapping(path = "/jpa/employeesinfo")
+    @PostMapping(path = "/jpa/employees-info")
     public void post2(@Valid @RequestBody EmployeesInfo employeesInfo) {
 
-        employeeInfoProcessor.post2(employeesInfo);
+        employeeInfoProcessor.post(employeesInfo);
     }
 
 }
