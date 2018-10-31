@@ -1,0 +1,120 @@
+[
+  {
+    "Employee": {
+      "Title": "Mrs.",
+      "FirstName": "Jane",
+      "MiddleName": "Lane",
+      "LastName": "Doe",
+      "DisplayName": "Jane Lane Doe",
+      "EmploymentDetails": {
+        "EmployeeId": "ABC123",
+        "JobTitle": "SVP",
+        "EmployeeType": "Regular",
+        "EmploymentStatus": "Active",
+        "DepartmentID": 1003,
+        "DepartmentName": "Information Technology",
+        "FirstHireDate": "01/01/2007",
+        "RehireDate": "02/02/2013"
+      },
+      "EmploymentHistory": [
+        {
+          "EmploymentStartDate": "01/01/2013",
+          "EmploymentEndDate": "02/02/2010",
+          "JobTitle": "VP",
+          "DepartmentDetails": {
+            "DepartmentID": 1003,
+            "DepartmentName": "Information Technology"
+          }
+        },
+        {
+          "EmploymentStartDate": "01/01/2010",
+          "EmploymentEndDate": "02/02/2007",
+          "JobTitle": "Director",
+          "DepartmentDetails": {
+            "DepartmentID": 1003,
+            "DepartmentName": "Information Technology"
+          }
+        }
+      ],
+      "YearlyRatings": [
+        {
+          "Year": 2017,
+          "Goal": "G1",
+          "Leadership": "L2"
+        },
+        {
+          "Year": 2016,
+          "Goal": "G2",
+          "Leadership": "L2"
+        }
+      ],
+      "CompensationDetails": {
+        "CurrentCompensation": {
+          "BaseSalary": 150000.00,
+          "MinAIABonusPercentage": 11,
+          "MinAIABonusValue": 16500
+        },
+        "CompensationHistory": [
+          {
+            "Year": 2017,
+            "StartingSalary": 140000,
+            "SalaryIncrementPercentage": 4,
+            "SalaryIncrementValue": 5600,
+            "TotalYearlyIncome": 168000,
+            "Incentives": {
+              "TotalIncentivesValue": 28000,
+              "FixedIncentives": [
+                {
+                  "IncentiveType": "AIA Bonus",
+                  "Percentage": 10,
+                  "TotalValue": 14000
+                }
+              ],
+              "PerformanceBasedIncentives": [
+                {
+                  "IncentiveType": "Chairman's Award",
+                  "Percentage": 5,
+                  "TotalValue": 7000
+                },
+                {
+                  "IncentiveType": "Innovation Award",
+                  "Percentage": 5,
+                  "TotalValue": 7000
+                }
+              ]
+            }
+          },
+          {
+            "Year": 2016,
+            "StartingSalary": 140000,
+            "SalaryIncrementPercentage": 4,
+            "SalaryIncrementValue": 5600,
+            "TotalYearlyIncome": 168000,
+            "Incentives": {
+              "TotalIncentivesValue": 28000,
+              "FixedIncentives": [
+                {
+                  "IncentiveType": "AIA Bonus",
+                  "Percentage": 10,
+                  "TotalValue": 14000
+                }
+              ],
+              "PerformanceBasedIncentives": [
+                {
+                  "IncentiveType": "Chairman's Award",
+                  "Percentage": 5,
+                  "TotalValue": 7000
+                },
+                {
+                  "IncentiveType": "Innovation Award",
+                  "Percentage": 5,
+                  "TotalValue": 7000
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+]

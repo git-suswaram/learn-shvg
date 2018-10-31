@@ -1,17 +1,8 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
 public class DepartmentDetails{
-	private String departmentID;
+	private int departmentID;
 	private String departmentName;
-	private String totalEmployeeCount;
-
-	public void setTotalEmployeeCount(String totalEmployeeCount){
-		this.totalEmployeeCount = totalEmployeeCount;
-	}
-
-	public String getTotalEmployeeCount(){
-		return totalEmployeeCount;
-	}
 
 	public void setDepartmentName(String departmentName){
 		this.departmentName = departmentName;
@@ -21,11 +12,11 @@ public class DepartmentDetails{
 		return departmentName;
 	}
 
-	public void setDepartmentID(String departmentID){
+	public void setDepartmentID(int departmentID){
 		this.departmentID = departmentID;
 	}
 
-	public String getDepartmentID(){
+	public int getDepartmentID(){
 		return departmentID;
 	}
 
@@ -33,8 +24,7 @@ public class DepartmentDetails{
  	public String toString(){
 		return 
 			"DepartmentDetails{" + 
-			"totalEmployeeCount = '" + totalEmployeeCount + '\'' + 
-			",departmentName = '" + departmentName + '\'' + 
+			"departmentName = '" + departmentName + '\'' + 
 			",departmentID = '" + departmentID + '\'' + 
 			"}";
 		}

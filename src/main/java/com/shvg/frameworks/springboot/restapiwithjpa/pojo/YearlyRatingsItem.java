@@ -1,7 +1,7 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
 public class YearlyRatingsItem{
-	private String year;
+	private int year;
 	private String goal;
 	private String leadership;
 
@@ -21,11 +21,11 @@ public class YearlyRatingsItem{
 		return goal;
 	}
 
-	public void setYear(String year){
+	public void setYear(int year){
 		this.year = year;
 	}
 
-	public String getYear(){
+	public int getYear(){
 		return year;
 	}
 

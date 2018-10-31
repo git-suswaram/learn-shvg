@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-public class EmployeeInfo{
+public class EmployeeInfo {
 	private Employee employee;
 
 	public void setEmployee(Employee employee){
@@ -14,7 +14,7 @@ public class EmployeeInfo{
 	@Override
  	public String toString(){
 		return 
-			"EmployeeInfo{" + 
+			"EmployeeInfo{" +
 			"employee = '" + employee + '\'' + 
 			"}";
 		}

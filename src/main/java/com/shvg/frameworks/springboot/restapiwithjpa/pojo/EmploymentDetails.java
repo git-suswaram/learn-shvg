@@ -1,16 +1,14 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
 
-import java.util.List;
-
 public class EmploymentDetails{
 	private String employeeId;
 	private String jobTitle;
 	private String employeeType;
 	private String employmentStatus;
+	private int departmentID;
+	private String departmentName;
 	private String firstHireDate;
-	private String latestHireDate;
-	private DepartmentDetails departmentDetails;
-	private List<YearlyRatingsItem> yearlyRatings;
+	private String rehireDate;
 
 	public void setFirstHireDate(String firstHireDate){
 		this.firstHireDate = firstHireDate;
@@ -20,28 +18,12 @@ public class EmploymentDetails{
 		return firstHireDate;
 	}
 
-	public void setDepartmentDetails(DepartmentDetails departmentDetails){
-		this.departmentDetails = departmentDetails;
+	public void setRehireDate(String rehireDate){
+		this.rehireDate = rehireDate;
 	}
 
-	public DepartmentDetails getDepartmentDetails(){
-		return departmentDetails;
-	}
-
-	public void setLatestHireDate(String latestHireDate){
-		this.latestHireDate = latestHireDate;
-	}
-
-	public String getLatestHireDate(){
-		return latestHireDate;
-	}
-
-	public void setTitle(String jobTitle){
-		this.jobTitle = jobTitle;
-	}
-
-	public String getTitle(){
-		return jobTitle;
+	public String getRehireDate(){
+		return rehireDate;
 	}
 
 	public void setEmploymentStatus(String employmentStatus){
@@ -52,12 +34,20 @@ public class EmploymentDetails{
 		return employmentStatus;
 	}
 
-	public void setYearlyRatings(List<YearlyRatingsItem> yearlyRatings){
-		this.yearlyRatings = yearlyRatings;
+	public void setDepartmentName(String departmentName){
+		this.departmentName = departmentName;
 	}
 
-	public List<YearlyRatingsItem> getYearlyRatings(){
-		return yearlyRatings;
+	public String getDepartmentName(){
+		return departmentName;
+	}
+
+	public void setDepartmentID(int departmentID){
+		this.departmentID = departmentID;
+	}
+
+	public int getDepartmentID(){
+		return departmentID;
 	}
 
 	public void setEmployeeId(String employeeId){
@@ -66,6 +56,14 @@ public class EmploymentDetails{
 
 	public String getEmployeeId(){
 		return employeeId;
+	}
+
+	public void setJobTitle(String jobTitle){
+		this.jobTitle = jobTitle;
+	}
+
+	public String getJobTitle(){
+		return jobTitle;
 	}
 
 	public void setEmployeeType(String employeeType){
@@ -81,12 +79,12 @@ public class EmploymentDetails{
 		return 
 			"EmploymentDetails{" + 
 			"firstHireDate = '" + firstHireDate + '\'' + 
-			",departmentDetails = '" + departmentDetails + '\'' + 
-			",latestHireDate = '" + latestHireDate + '\'' + 
-			",jobTitle = '" + jobTitle + '\'' +
+			",rehireDate = '" + rehireDate + '\'' + 
 			",employmentStatus = '" + employmentStatus + '\'' + 
-			",yearlyRatings = '" + yearlyRatings + '\'' + 
+			",departmentName = '" + departmentName + '\'' + 
+			",departmentID = '" + departmentID + '\'' + 
 			",employeeId = '" + employeeId + '\'' + 
+			",jobTitle = '" + jobTitle + '\'' + 
 			",employeeType = '" + employeeType + '\'' + 
 			"}";
 		}
