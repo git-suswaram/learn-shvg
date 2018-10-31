@@ -1,4 +1,4 @@
-package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
+package com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo;
 
 public class PerformanceBasedIncentives {
 	private String incentiveType;

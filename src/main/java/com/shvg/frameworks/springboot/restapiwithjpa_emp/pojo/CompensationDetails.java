@@ -1,4 +1,4 @@
-package com.shvg.frameworks.springboot.restapiwithjpa.pojo;
+package com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo;
 
 import java.util.List;
 
