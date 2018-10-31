@@ -20,8 +20,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+
 public class EmployeeResource {
 
+    /* @Value("env.variables.domain.URL")
+     private String domainUrl;
+ */
     @Autowired
     private final JEmployeeService jeEmployeeService;
 
@@ -35,18 +39,32 @@ public class EmployeeResource {
         this.jeEmployeeService = jeEmployeeService;
     }
 
-    @GetMapping(path = "/jpa/employee")
-    public MappingJacksonValue get() {
+    @GetMapping(path = {"/jpa/employees", "/jpa/employees/count"})
+    public MappingJacksonValue get() throws Exception {
+
         logger.info("Entering /jpa/employee");
-        List<JEmployee> employees = jeEmployeeService.get();
+        String requestURI = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .toUriString()
+                .replace("http://localhost:8080", "");
+        logger.info("ServletUriComponentsBuilder requestURI: {}", requestURI);
 
-        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
-        FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
+        if ("/jpa/employees".equals(requestURI)) {
+            List<JEmployee> employees = getEmployees();
+            SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("employeeID", "firstName", "lastName", "jobTitle");
+            FilterProvider filters = new SimpleFilterProvider().addFilter("FilterEmployeeInfo", filter);
 
-        MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employees);
-        mappingJacksonValue.setFilters(filters);
+            MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employees);
+            mappingJacksonValue.setFilters(filters);
+            return mappingJacksonValue;
+        } else if ("/jpa/employees/count".equals(requestURI)) {
+            long employeeCount = getEmployeesCount();
 
-        return mappingJacksonValue;
+            MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(employeeCount);
+            return mappingJacksonValue;
+        } else {
+            throw new Exception("Unhandled URI");
+        }
     }
 
     @GetMapping(path = "/jpa/employee/{employeeID}")
@@ -66,7 +84,6 @@ public class EmployeeResource {
         mappingJacksonValue.setFilters(filters);
         return mappingJacksonValue;
     }
-
 
     @PostMapping(path = "/jpa/employee")
     public ResponseEntity<Object> post(@Valid @RequestBody JEmployee employee) {
@@ -93,5 +110,13 @@ public class EmployeeResource {
         return ResponseEntity.noContent().build();
     }
 
+    private long getEmployeesCount() {
+        long employeeCount = jeEmployeeService.count();
+        return employeeCount;
+    }
 
+    private List<JEmployee> getEmployees() {
+        List<JEmployee> employees = jeEmployeeService.get();
+        return employees;
+    }
 }

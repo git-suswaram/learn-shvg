@@ -15,4 +15,7 @@ public interface JEmployeeService {
 
     void delete(int employeeID);
 
+    long count();
+
+
 }

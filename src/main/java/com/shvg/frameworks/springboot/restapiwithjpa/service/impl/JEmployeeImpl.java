@@ -39,4 +39,9 @@ public class JEmployeeImpl implements JEmployeeService {
 
         jEmployeeRepository.deleteById(employeeID);
     }
+
+    @Override
+    public long count() {
+        return jEmployeeRepository.count();
+    }
 }
