@@ -1,0 +1,168 @@
+[
+  {
+    "Employee": {
+      "Title": "Mrs.",
+      "FirstName": "Jane",
+      "MiddleName": "Lane",
+      "LastName": "Doe",
+      "DisplayName": "Jane Lane Doe",
+      "EmploymentDetails": {
+        "EmployeeId": "ABC123",
+        "JobTitle": "SVP",
+        "EmployeeType": "Regular",
+        "EmploymentStatus": "Active",
+        "FirstHireDate": "01/01/2007",
+        "LatestHireDate": "02/02/2013",
+        "DepartmentDetails": {
+          "DepartmentID": "1003",
+          "DepartmentName": "Information Technology",
+          "TotalEmployeeCount": "50"
+        },
+        "YearlyRatings": [
+          {
+            "Year": "2017",
+            "Goal": "G1",
+            "Leadership": "L2"
+          },
+          {
+            "Year": "2016",
+            "Goal": "G2",
+            "Leadership": "L2"
+          }
+        ]
+      },
+      "ContactInformation": {
+        "Phone": {
+          "WorkPhone": "505.555.9999",
+          "MobilePhone": "505.555.9999",
+          "HomePhone": "505.555.9999"
+        },
+        "EmailAddress": {
+          "PrimaryAddress": "janedoe@example.com",
+          "SecondaryAddress": "janedoe@example.com"
+        },
+        "PhysicalAddress": [
+          {
+            "AddressType": "Home",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "Office",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "LocalMailing",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "International",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "Employee": {
+      "Title": "Mrs.",
+      "FirstName": "Jane",
+      "MiddleName": "Lane",
+      "LastName": "Doe",
+      "DisplayName": "Jane Lane Doe",
+      "EmploymentDetails": {
+        "EmployeeId": "ABC123",
+        "JobTitle": "SVP",
+        "EmployeeType": "Regular",
+        "EmploymentStatus": "Active",
+        "FirstHireDate": "01/01/2007",
+        "LatestHireDate": "02/02/2013",
+        "DepartmentDetails": {
+          "DepartmentID": "1003",
+          "DepartmentName": "Information Technology",
+          "TotalEmployeeCount": "50"
+        },
+        "YearlyRatings": [
+          {
+            "Year": "2017",
+            "Goal": "G1",
+            "Leadership": "L2"
+          },
+          {
+            "Year": "2016",
+            "Goal": "G2",
+            "Leadership": "L2"
+          }
+        ]
+      },
+      "ContactInformation": {
+        "Phone": {
+          "WorkPhone": "505.555.9999",
+          "MobilePhone": "505.555.9999",
+          "HomePhone": "505.555.9999"
+        },
+        "EmailAddress": {
+          "PrimaryAddress": "janedoe@example.com",
+          "SecondaryAddress": "janedoe@example.com"
+        },
+        "PhysicalAddress": [
+          {
+            "AddressType": "Home",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "Office",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "LocalMailing",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          },
+          {
+            "AddressType": "International",
+            "AddressLine1": "123 Any Street",
+            "AddressLine2": "123 Any Street",
+            "City": "Any City",
+            "State": "WA",
+            "Country": "USA",
+            "PostalCode": "01234"
+          }
+        ]
+      }
+    }
+  }
+]
