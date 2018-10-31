@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.service;
 
-import com.shvg.frameworks.springboot.basedata.entity.JPost;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JPost;
 
 import java.util.List;
 import java.util.Optional;

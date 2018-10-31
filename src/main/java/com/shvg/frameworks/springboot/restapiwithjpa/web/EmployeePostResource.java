@@ -1,7 +1,7 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.web;
 
-import com.shvg.frameworks.springboot.basedata.entity.JEmployee;
-import com.shvg.frameworks.springboot.basedata.entity.JPost;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JEmployee;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JPost;
 import com.shvg.frameworks.springboot.restapiwithjpa.exception.EmployeeNotFoundException;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JEmployeeService;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JPostService;

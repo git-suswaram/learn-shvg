@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.basedata.data;
 
-import com.shvg.frameworks.springboot.basedata.entity.JEmployee;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JEmployee;
 
 import java.time.LocalDate;
 import java.time.Month;

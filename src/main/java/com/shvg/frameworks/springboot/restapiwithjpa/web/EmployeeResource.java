@@ -3,7 +3,7 @@ package com.shvg.frameworks.springboot.restapiwithjpa.web;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.shvg.frameworks.springboot.basedata.entity.JEmployee;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JEmployee;
 import com.shvg.frameworks.springboot.restapiwithjpa.exception.EmployeeNotFoundException;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JEmployeeService;
 import org.slf4j.Logger;

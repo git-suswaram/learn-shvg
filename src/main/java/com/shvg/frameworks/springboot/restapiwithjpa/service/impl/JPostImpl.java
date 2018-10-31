@@ -1,7 +1,7 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.service.impl;
 
-import com.shvg.frameworks.springboot.restapiwithjpa.dao.springdatajparepository.JPostRepository;
-import com.shvg.frameworks.springboot.basedata.entity.JPost;
+import com.shvg.frameworks.springboot.restapiwithjpa.repository.JPostRepository;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JPost;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

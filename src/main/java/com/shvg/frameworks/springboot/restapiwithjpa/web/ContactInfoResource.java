@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.web;
 
-import com.shvg.frameworks.springboot.basedata.entity.JContactInfo;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JContactInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa.exception.ContactInfoNotFoundException;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JContactInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

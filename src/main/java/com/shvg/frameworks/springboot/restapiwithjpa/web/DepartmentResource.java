@@ -1,6 +1,6 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.web;
 
-import com.shvg.frameworks.springboot.basedata.entity.JDepartment;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JDepartment;
 import com.shvg.frameworks.springboot.restapiwithjpa.exception.DepartmentNotFoundException;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;

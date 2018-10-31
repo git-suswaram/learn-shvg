@@ -1,7 +1,7 @@
 package com.shvg.frameworks.springboot.restapiwithjpa.service.impl;
 
-import com.shvg.frameworks.springboot.basedata.entity.JDepartment;
-import com.shvg.frameworks.springboot.restapiwithjpa.dao.springdatajparepository.JDepartmentRepository;
+import com.shvg.frameworks.springboot.restapiwithjpa.entity.JDepartment;
+import com.shvg.frameworks.springboot.restapiwithjpa.repository.JDepartmentRepository;
 import com.shvg.frameworks.springboot.restapiwithjpa.service.JDepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 @SpringBootApplication(
         scanBasePackages = {"com.shvg.frameworks.springboot.basedata", "com.shvg.frameworks.springboot.restapiwithjpa"})
-@EntityScan("com.shvg.frameworks.springboot.basedata.entity")
+@EntityScan("com.shvg.frameworks.springboot.restapiwithjpa.entity")
 @Configuration
 
 /*@PropertySources({
