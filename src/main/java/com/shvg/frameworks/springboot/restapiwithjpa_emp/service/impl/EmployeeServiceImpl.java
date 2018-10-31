@@ -32,9 +32,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<JEEmployee> post(List<JEEmployee> jeEmployeeList) {
 
-        for(JEEmployee jeEmployee : jeEmployeeList){
-            employeeRepository.save(jeEmployee);
-        }
+        employeeRepository.saveAll(jeEmployeeList);
         return jeEmployeeList;
     }
 
