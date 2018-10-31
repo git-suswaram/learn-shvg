@@ -19,7 +19,8 @@ public class EmployeeInfoProcessor {
     private EmployeeService employeeService;
 
     @Autowired
-    JEEmployee jeEmployee;
+    private JEEmployee jeEmployee;
+
     @Autowired
     private EmployeeRequest employeeRequest;
 
