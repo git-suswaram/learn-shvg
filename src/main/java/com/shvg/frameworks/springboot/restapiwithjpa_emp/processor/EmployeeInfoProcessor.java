@@ -2,6 +2,7 @@ package com.shvg.frameworks.springboot.restapiwithjpa_emp.processor;
 
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.entity.JEEmployee;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.entity.JEEmploymentDetails;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeeInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeesInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.request.EmployeeRequest;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.request.JEEmploymentDetailsRequest;
@@ -43,16 +44,18 @@ public class EmployeeInfoProcessor {
         List<JEEmployee> jeEmployeeList = new LinkedList<>();
         List<JEEmploymentDetails> jeEmploymentDetailsList = new LinkedList<>();
 
-        logger.info("\nEmployeesInfo-Size: {}", employeesInfo.getEmployeeInfo().size());
+        List<EmployeeInfo> employeeInfo = employeesInfo.getEmployeeInfo();
 
-        for (int i = 0; i < employeesInfo.getEmployeeInfo().size(); i++) {
+        logger.info("\nEmployeesInfo-Size: {}", employeeInfo.size());
+
+        for (int i = 0; i < employeeInfo.size(); i++) {
 
             jeEmployee = employeeRequest
-                    .buildRequest(employeesInfo.getEmployeeInfo().get(i));
+                    .buildRequest(employeeInfo.get(i));
             jeEmployeeList.add(jeEmployee);
 
             jeEmploymentDetails = jeEmploymentDetailsRequest
-                    .buildRequest(employeesInfo.getEmployeeInfo().get(i).getEmployee().getEmploymentDetails());
+                    .buildRequest(employeeInfo.get(i).getEmployee().getEmploymentDetails());
             jeEmploymentDetailsList.add(jeEmploymentDetails);
         }
 
