@@ -1,8 +1,11 @@
 package com.shvg.frameworks.springboot.restapiwithjpa_emp.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shvg.frameworks.springboot.basedata.data.DummyEmployeeJSONDataGenerator;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeesInfo;
-import com.shvg.frameworks.springboot.restapiwithjpa_emp.processor.EmployeeInfoProcessor;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.web.dummy.DummyBusinessService;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.web.dummy.DummyEmployeeInfoResource;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -18,15 +21,17 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.File;
-
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @Test
-//@RunWith(SpringRunner.class)
-//@WebAppConfiguration
-@WebMvcTest(EmployeeInfoResource.class)
+/*
+@RunWith(SpringRunner.class)
+@WebAppConfiguration
+*/
+@WebMvcTest(DummyEmployeeInfoResource.class)
 public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -35,45 +40,62 @@ public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    @Autowired
+    private DummyBusinessService dummyBusinessService;
+
+    private String jsonString;
+
     @BeforeMethod
     public void setUp() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-    @MockBean
-    private EmployeeInfoProcessor employeeInfoProcessor;
-
-    private String jsonString;
 
 
     @Before
     public void before() {
-
         ObjectMapper mapper = new ObjectMapper();
+        EmployeesInfo employeesInfo = DummyEmployeeJSONDataGenerator.generateDummyEmployeeJSON();
         try {
-            EmployeesInfo employeesInfo =
-                    mapper.readValue(new File("C:\\SRV_HVG\\IntelliJ_Workspace\\learn-shvg" +
-                            "\\src\\test\\resources\\sampleRequest\\EmployeeInfo_Request.json"), EmployeesInfo.class);
-
             jsonString = mapper.writeValueAsString(employeesInfo);
-            System.out.println(jsonString);
-
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (JsonProcessingException e1) {
+            e1.printStackTrace();
         }
     }
 
+    @Test
+    public void test_getJsonHardCoded() throws Exception {
+
+        RequestBuilder requestBuilder =
+                MockMvcRequestBuilders
+                        .get("/jpa/hardcoded-employees-info-json")
+                        .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult mvcResult =
+                mockMvc.perform(requestBuilder)
+                        .andExpect(status().isOk())
+                        .andExpect(content().json(jsonString))
+                        .andReturn();
+        //JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), strict);
+    }
 
     @Test
-    public void post() throws Exception {
+    public void getJsonFromBusinessService() throws Exception {
 
-        //Call /jpa/employees-info
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/jpa/employees-info")
-                .accept(MediaType.APPLICATION_JSON);
+        when(dummyBusinessService.retrieveHardCodedJson()).thenReturn(
+                DummyEmployeeJSONDataGenerator.generateDummyEmployeeJSON());
 
-        MvcResult mvcResult = mockMvc.perform(requestBuilder)
-                .andExpect(status().isOk())
-                .andExpect(content().json(jsonString))
-                .andReturn();
+        RequestBuilder requestBuilder =
+                MockMvcRequestBuilders
+                        .get("/jpa/employees-info-business")
+                        .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult mvcResult =
+                mockMvc.perform(requestBuilder)
+                        .andExpect(status().isOk())
+                        .andExpect(content().json(jsonString))
+                        .andReturn();
+        //JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), strict);
     }
 }
