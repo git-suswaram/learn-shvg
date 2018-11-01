@@ -18,8 +18,6 @@ public class JEEmployee {
     private String middleName;
     private String lastName;
     private String displayName;
-    private String jobTitle;
-    private int departmentID;
 
     public JEEmployee() {
     }
@@ -72,22 +70,6 @@ public class JEEmployee {
         this.displayName = displayName;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
-    public int getDepartmentID() {
-        return departmentID;
-    }
-
-    public void setDepartmentID(int departmentID) {
-        this.departmentID = departmentID;
-    }
-
     @Override
     public String toString() {
         return "EmployeeJEntity{" +
@@ -96,9 +78,7 @@ public class JEEmployee {
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", displayName='" + displayName + '\'' +
-                ", jobTitle='" + jobTitle + '\'' +
-                ", departmentID=" + departmentID +
+                ", displayName='" + displayName + '\''+
                 '}';
     }
 }

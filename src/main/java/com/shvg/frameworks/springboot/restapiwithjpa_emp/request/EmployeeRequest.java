@@ -16,8 +16,6 @@ public class EmployeeRequest {
         jeEmployee.setLastName(employeeInfo.getEmployee().getLastName());
         jeEmployee.setMiddleName(employeeInfo.getEmployee().getMiddleName());
         jeEmployee.setDisplayName(employeeInfo.getEmployee().getDisplayName());
-        jeEmployee.setJobTitle(employeeInfo.getEmployee().getEmploymentDetails().getJobTitle());
-        jeEmployee.setDepartmentID(employeeInfo.getEmployee().getEmploymentDetails().getDepartmentID());
 
         return jeEmployee;
     }
