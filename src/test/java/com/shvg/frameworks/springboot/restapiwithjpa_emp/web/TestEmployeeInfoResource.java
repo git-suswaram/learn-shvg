@@ -4,38 +4,51 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeesInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.processor.EmployeeInfoProcessor;
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.File;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
+@Test
+//@RunWith(SpringRunner.class)
+//@WebAppConfiguration
 @WebMvcTest(EmployeeInfoResource.class)
-public class TestEmployeeInfoResource {
+public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
 
     @Autowired
     private MockMvc mockMvc;
 
+    @BeforeMethod
+    public void setUp() {
+        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
+
     @MockBean
     private EmployeeInfoProcessor employeeInfoProcessor;
 
-
     private String jsonString;
+
 
     @Before
     public void before() {
+
         ObjectMapper mapper = new ObjectMapper();
         try {
             EmployeesInfo employeesInfo =
@@ -50,6 +63,7 @@ public class TestEmployeeInfoResource {
         }
     }
 
+
     @Test
     public void post() throws Exception {
 
@@ -61,7 +75,5 @@ public class TestEmployeeInfoResource {
                 .andExpect(status().isOk())
                 .andExpect(content().json(jsonString))
                 .andReturn();
-
     }
-
 }
