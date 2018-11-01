@@ -40,8 +40,7 @@ public class TestEmployeeInfoResource {
         try {
             EmployeesInfo employeesInfo =
                     mapper.readValue(new File("C:\\SRV_HVG\\IntelliJ_Workspace\\learn-shvg" +
-                            "\\src\\test\\java\\com\\shvg\\frameworks\\springboot\\restapiwithjpa_emp" +
-                            "\\web\\EmployeeInfo_Request.json"), EmployeesInfo.class);
+                            "\\src\\test\\resources\\sampleRequest\\EmployeeInfo_Request.json"), EmployeesInfo.class);
 
             jsonString = mapper.writeValueAsString(employeesInfo);
             System.out.println(jsonString);
@@ -62,7 +61,7 @@ public class TestEmployeeInfoResource {
                 .andExpect(status().isOk())
                 .andExpect(content().json(jsonString))
                 .andReturn();
-        //assertEquals(jsonString, mvcResult.getResponse().getContentAsString());
+
     }
 
 }

@@ -32,10 +32,9 @@ public class EmployeeInfoResource {
 
         try {
 
-            employeesInfo = mapper
-                    .readValue(new File("C:\\SRV_HVG\\IntelliJ_Workspace\\learn-shvg" +
-                            "\\src\\test\\java\\com\\shvg\\frameworks\\springboot\\restapiwithjpa_emp" +
-                            "\\web\\EmployeeInfo_Request.json"), EmployeesInfo.class);
+             employeesInfo =
+                    mapper.readValue(new File("C:\\SRV_HVG\\IntelliJ_Workspace\\learn-shvg" +
+                            "\\src\\main\\resources\\sampleRequest\\EmployeeInfo_Request.json"), EmployeesInfo.class);
 
         } catch (Exception e) {
             e.printStackTrace();
