@@ -19,25 +19,24 @@ import java.util.List;
 @Component
 public class EmployeeInfoProcessor {
 
-    @Autowired
     private JEEmployee jeEmployee;
-
-    @Autowired
     private JEEmploymentDetails jeEmploymentDetails;
-
-    @Autowired
     private EmployeeRequest employeeRequest;
-
-    @Autowired
     private JEEmploymentDetailsRequest jeEmploymentDetailsRequest;
-
-    @Autowired
     private EmployeeService employeeService;
-
-    @Autowired
     private EmploymentDetailsService employmentDetailsService;
 
     private static Logger logger = LoggerFactory.getLogger(EmployeeInfoProcessor.class);
+
+    @Autowired
+    public EmployeeInfoProcessor(JEEmployee jeEmployee, JEEmploymentDetails jeEmploymentDetails, EmployeeRequest employeeRequest, JEEmploymentDetailsRequest jeEmploymentDetailsRequest, EmployeeService employeeService, EmploymentDetailsService employmentDetailsService) {
+        this.jeEmployee = jeEmployee;
+        this.jeEmploymentDetails = jeEmploymentDetails;
+        this.employeeRequest = employeeRequest;
+        this.jeEmploymentDetailsRequest = jeEmploymentDetailsRequest;
+        this.employeeService = employeeService;
+        this.employmentDetailsService = employmentDetailsService;
+    }
 
     public List<JEEmployee> post(EmployeesInfo employeesInfo) {
 
@@ -48,14 +47,14 @@ public class EmployeeInfoProcessor {
 
         logger.info("\nEmployeesInfo-Size: {}", employeeInfo.size());
 
-        for (int i = 0; i < employeeInfo.size(); i++) {
+        for (EmployeeInfo anEmployeeInfo : employeeInfo) {
 
             jeEmployee = employeeRequest
-                    .buildRequest(employeeInfo.get(i));
+                    .buildRequest(anEmployeeInfo);
             jeEmployeeList.add(jeEmployee);
 
             jeEmploymentDetails = jeEmploymentDetailsRequest
-                    .buildRequest(employeeInfo.get(i).getEmployee().getEmploymentDetails());
+                    .buildRequest(anEmployeeInfo.getEmployee().getEmploymentDetails());
             jeEmploymentDetailsList.add(jeEmploymentDetails);
         }
 
