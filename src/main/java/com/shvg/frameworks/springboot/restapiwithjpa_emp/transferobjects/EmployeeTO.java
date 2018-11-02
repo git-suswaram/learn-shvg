@@ -3,7 +3,6 @@ package com.shvg.frameworks.springboot.restapiwithjpa_emp.transferobjects;
 import org.springframework.stereotype.Component;
 
 @Component
-
 public class EmployeeTO {
 
     private String employeeId;

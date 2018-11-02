@@ -31,16 +31,6 @@ public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
     @InjectMocks
     EmployeeInfoProcessor employeeInfoProcessor;
 
-   /* @Mock
-    private JEEmployee jeEmployee;
-    @Mock
-    private JEEmploymentDetails jeEmploymentDetails;
-    @Mock
-    private EmployeeRequest employeeRequest;
-    @Mock
-    private JEEmploymentDetailsRequest jeEmploymentDetailsRequest;
-     @Mock
-    private EmploymentDetailsService employmentDetailsService;*/
     @Mock
     private EmployeeServiceImpl employeeService;
 
@@ -83,8 +73,6 @@ public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
        List<EmployeeTO> employeeTOS = employeeInfoProcessor.get();
 
        assertEquals("Welcome Mr.John Doe",employeeTOS.get(0).getDisplayName());
-
-
 
    }
 }
