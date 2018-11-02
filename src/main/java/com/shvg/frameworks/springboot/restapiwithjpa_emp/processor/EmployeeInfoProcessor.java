@@ -8,6 +8,7 @@ import com.shvg.frameworks.springboot.restapiwithjpa_emp.request.EmployeeRequest
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.request.JEEmploymentDetailsRequest;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.service.EmployeeService;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.service.EmploymentDetailsService;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.transferobjects.EmployeeTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,24 @@ public class EmployeeInfoProcessor {
         this.jeEmploymentDetailsRequest = jeEmploymentDetailsRequest;
         this.employeeService = employeeService;
         this.employmentDetailsService = employmentDetailsService;
+    }
+
+    public List<EmployeeTO> get() {
+        List<JEEmployee> jeEmployees = employeeService.get();
+        List<EmployeeTO> employeeTOS = new LinkedList<>();
+
+        for (JEEmployee jeEmployee : jeEmployees) {
+            EmployeeTO employeeTO = new EmployeeTO();
+            employeeTO.setEmployeeId(jeEmployee.getEmployeeId());
+            employeeTO.setTitle(jeEmployee.getTitle());
+            employeeTO.setFirstName(jeEmployee.getFirstName());
+            employeeTO.setMiddleName(jeEmployee.getMiddleName());
+            employeeTO.setLastName(jeEmployee.getLastName());
+            employeeTO.setDisplayName("Welcome ".concat(jeEmployee.getDisplayName()));
+            employeeTOS.add(employeeTO);
+        }
+
+        return employeeTOS;
     }
 
     public List<JEEmployee> post(EmployeesInfo employeesInfo) {

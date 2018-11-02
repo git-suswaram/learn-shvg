@@ -1,4 +1,3 @@
-/*
 package com.shvg.java8;
 
 import org.junit.Test;
@@ -15,4 +14,3 @@ public class LearnShvgApplicationTests {
 	}
 
 }
-*/

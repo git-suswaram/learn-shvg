@@ -39,11 +39,11 @@ public class JPost {
         this.description = description;
     }
 
-/* Having these getters creates recursion
-    public JEmployee getEmployee() {
-        return jEmployee;
-    }
-*/
+    /* Having these getters creates recursion
+        public JEmployee getEmployee() {
+            return jEmployee;
+        }
+    */
     public void setEmployee(JEmployee employee) {
         this.jEmployee = employee;
     }

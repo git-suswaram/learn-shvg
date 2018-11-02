@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeeRequest {
 
-   public JEEmployee buildRequest(EmployeeInfo employeeInfo) {
+    public JEEmployee buildRequest(EmployeeInfo employeeInfo) {
 
         JEEmployee jeEmployee = new JEEmployee();
         jeEmployee.setEmployeeId(employeeInfo.getEmployee().getEmploymentDetails().getEmployeeId());

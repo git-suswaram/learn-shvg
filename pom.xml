@@ -118,9 +118,9 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+            <version>6.10</version>
             <scope>test</scope>
         </dependency>
-
 
         <!-- Administration  Components -->
 
@@ -136,16 +136,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0-beta1</version>
-            <scope>test</scope>
-        </dependency>
 
     </dependencies>
 
     <build>
+        <finalName>testng</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

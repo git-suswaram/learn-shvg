@@ -1,25 +1,28 @@
-package com.shvg.frameworks.springboot.restapiwithjpa_emp.entity;
+package com.shvg.frameworks.springboot.restapiwithjpa_emp.transferobjects;
 
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
-
 @Component
-@Entity
-public class JEEmployee {
 
-    @Id
+public class EmployeeTO {
+
     private String employeeId;
     private String title;
-    @Size(min = 2, message = "FirstName should be minimum of 2 characters")
     private String firstName;
     private String middleName;
     private String lastName;
     private String displayName;
 
-    public JEEmployee() {
+    public EmployeeTO() {
+    }
+
+    public EmployeeTO(String employeeId, String title, String firstName, String middleName, String lastName, String displayName) {
+        this.employeeId = employeeId;
+        this.title = title;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.displayName = displayName;
     }
 
     public String getEmployeeId() {
@@ -72,7 +75,7 @@ public class JEEmployee {
 
     @Override
     public String toString() {
-        return "EmployeeJEntity{" +
+        return "EmployeeTO{" +
                 "employeeId='" + employeeId + '\'' +
                 ", title='" + title + '\'' +
                 ", firstName='" + firstName + '\'' +

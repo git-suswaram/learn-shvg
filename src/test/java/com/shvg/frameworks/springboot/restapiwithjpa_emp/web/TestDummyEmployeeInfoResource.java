@@ -4,8 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shvg.frameworks.springboot.basedata.data.DummyEmployeeJSONDataGenerator;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeesInfo;
-import com.shvg.frameworks.springboot.restapiwithjpa_emp.processor.EmployeeInfoProcessor;
-import com.shvg.frameworks.springboot.restapiwithjpa_emp.transferobjects.EmployeeTO;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.web.dummy.DummyBusinessService;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -21,8 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -34,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 */
 @WebMvcTest(EmployeeInfoResource.class)
-public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
+public class TestDummyEmployeeInfoResource extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -44,7 +41,7 @@ public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
 
     @MockBean
     @Autowired
-    private EmployeeInfoProcessor employeeInfoProcessor;
+    private DummyBusinessService dummyBusinessService;
 
     private String jsonString;
 
@@ -64,32 +61,37 @@ public class TestEmployeeInfoResource extends AbstractTestNGSpringContextTests {
         }
     }
 
-   @Test(groups="regression")
-    public void getEmployeesFromEmployeeInfo() throws Exception {
-
-        when(employeeInfoProcessor.get()).thenReturn(
-                (Arrays.asList(
-                        new EmployeeTO("1010102","Ms.",
-                                "Jane","Lane","Doe",
-                                "Ms.Jane Doe"),
-                        new EmployeeTO("1010101","Mr.",
-                                "John","Lane","Doe",
-                                "Mr.John Doe")
-                        )));
-
-        String expectedValue="[{\"employeeId\":\"1010101\",\"title\":\"Mr.\",\"firstName\":\"John\",\"middleName\":\"Lane\"," +
-                "\"lastName\":\"Doe\",\"displayName\":\"Welcome Mr.John Lane Doe\"},{\"employeeId\":\"1010102\",\"title\":\"Ms.\"," +
-                "\"firstName\":\"Jane\",\"middleName\":\"Lane\",\"lastName\":\"Doe\",\"displayName\":\"Welcome Ms.Jane Lane Doe\"}]";
+    @Test
+    public void test_getJsonHardCoded() throws Exception {
 
         RequestBuilder requestBuilder =
                 MockMvcRequestBuilders
-                        .get("/jpa/employees-info/employee")
+                        .get("/jpa/hardcoded-employees-info-json")
                         .accept(MediaType.APPLICATION_JSON);
 
         MvcResult mvcResult =
                 mockMvc.perform(requestBuilder)
                         .andExpect(status().isOk())
-                        .andExpect(content().json(expectedValue))
+                        .andExpect(content().json(jsonString))
+                        .andReturn();
+        //JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), strict);
+    }
+
+    @Test
+    public void getJsonFromBusinessService() throws Exception {
+
+        when(dummyBusinessService.retrieveHardCodedJson()).thenReturn(
+                DummyEmployeeJSONDataGenerator.generateDummyEmployeeJSON());
+
+        RequestBuilder requestBuilder =
+                MockMvcRequestBuilders
+                        .get("/jpa/employees-info-business")
+                        .accept(MediaType.APPLICATION_JSON);
+
+        MvcResult mvcResult =
+                mockMvc.perform(requestBuilder)
+                        .andExpect(status().isOk())
+                        .andExpect(content().json(jsonString))
                         .andReturn();
         //JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), strict);
     }

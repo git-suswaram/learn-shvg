@@ -17,7 +17,7 @@ public class JsonAssertTest {
     private String expectedResponse_1Line =  "{\"id\": 1, \"name\": \"JohnDoe\", \"age\": 49, \"gender\": \"male\"}";
     private String expectedResponse_Readable =  "{id: 1, name: JohnDoe, age: 49, gender: male}";
 
-    @Test
+    @Test(groups = "regression")
     public void jsonAssert_StrictTrue_ExactMatchExceptForSpaces() throws JSONException {
         String actualResponse =  "{\"id\": 1, \"name\": \"JohnDoe\", \"age\": 49, \"gender\": \"male\"}";
 

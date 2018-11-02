@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--<suite name="suite" parallel="classes" thread-count="2">-->
+<suite name="Suite" parallel="tests" thread-count="10" verbose="1">
+    <!--<listeners>
+        <listener class-name="com.baeldung.reports.CustomisedReports" />
+    </listeners>-->
+    <test name="test suite">
+        <groups>
+            <!--<run>
+                <include name="regression"/>
+            </run>-->
+        </groups>
+	    <classes>
+	        <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.TestEmployeeProcessor">
+            <methods>
+                <include name="getEmployeesFromEmployeeInfo"/>
+            </methods>
+            </class>
+            <class name="com.shvg.frameworks.springboot.restapiwithjpa.util.JsonAssertTest"/>
+        </classes>
+    </test>
+</suite>
