@@ -1,22 +1,77 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<!--<suite name="suite" parallel="classes" thread-count="2">-->
-<suite name="Suite" parallel="tests" thread-count="10" verbose="1">
-    <!--<listeners>
-        <listener class-name="com.baeldung.reports.CustomisedReports" />
-    </listeners>-->
-    <test name="test suite">
+<suite name="Suite" parallel="tests" thread-count="3" verbose="1">
+
+    <!--######################################################################################################-->
+
+    <test name="Integration Test using @SpringBootTest">
         <groups>
-            <!--<run>
-                <include name="regression"/>
-            </run>-->
+            <run>
+                <include name="SpringRunner"/>
+            </run>
         </groups>
-	    <classes>
-	        <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.TestEmployeeProcessor">
-            <methods>
-                <include name="getEmployeesFromEmployeeInfo"/>
-            </methods>
+        <classes>
+            <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.EmployeeInfoResourceIT">
+                <methods>
+                    <include name="contextLoads"/>
+                </methods>
             </class>
-            <class name="com.shvg.frameworks.springboot.restapiwithjpa.util.JsonAssertTest"/>
         </classes>
     </test>
+
+    <!--######################################################################################################-->
+
+    <test name="Controller Test using @WebMvcTest">
+        <groups>
+            <run>
+                <include name="WebMvcTest"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.TestEmployeeInfoResource">
+                <methods>
+                    <include name="getEmployeesFromEmployeeInfo"/>
+                    <include name="postEmployeeInfo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--######################################################################################################-->
+
+    <test name="Controller Test using @RunWith(MockitoJUnitRunner)">
+        <groups>
+            <run>
+                <include name="MockitoJUnitRunner"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.TestEmployeeProcessor">
+                <methods>
+                    <include name="getEmployeesFromEmployeeInfo"/>
+                    <include name="postEmployeeInfo"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--######################################################################################################-->
+
+    <test name="TestDataLayer using @DataJpaTest">
+        <groups>
+            <run>
+                <include name="SpringRunner"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.shvg.frameworks.springboot.restapiwithjpa_emp.web.TestEmployeeRepository">
+                <methods>
+                    <include name="getEmployeeDataFromDB"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!--######################################################################################################-->
+
+    <!--######################################################################################################-->
 </suite>

@@ -1,0 +1,42 @@
+logging   :
+  file : C:\\temp\\intelliJ_logs\\test-springboot-rest-api-with-jpa.log
+  level:
+    com : INFO
+    org :
+      springframework: ERROR
+    root: ERROR
+
+spring    :
+  jpa        :
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+  jackson    :
+    serialization:
+      write-dates-as-timestamps: FALSE
+  profiles   :
+    active : ${profile:local}
+    include: $(ENV_NAME:local}
+  application:
+    name: springboot-rest-api-with-jpa
+  output     :
+    ansi:
+      enabled: always
+
+management:
+  security :
+    enabled: FLASE
+  endpoints:
+    default:
+      enabled: TRUE
+    web    :
+      exposure:
+        include: "*"
+        exclude:
+      basePath: "/"
+
+env:
+   variables:
+            domain:
+                  URL: http://localhost:8080

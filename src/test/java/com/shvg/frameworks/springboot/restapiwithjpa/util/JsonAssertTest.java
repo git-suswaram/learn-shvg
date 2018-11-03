@@ -25,12 +25,12 @@ public class JsonAssertTest {
         //JSONAssert.assertEquals(expectedResponse,actualResponsePartial,false);
     }
 
-    @Test
+ /*   @Test
     public void jsonAssert_StrictFalse() throws JSONException {
         String actualResponsePartial =  "{\"id\": 1, \"name\": \"JohnDoe\", \"age\": 49}";
 
         JSONAssert.assertEquals(expectedResponse_1Line,actualResponsePartial, JSONCompareMode.LENIENT);
-    }
+    }*/
 
     @Test
     public void jsonAssert_WithoutEscapeChars_StrictFalse() throws JSONException {

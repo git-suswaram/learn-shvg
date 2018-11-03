@@ -14,6 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,7 +26,10 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 import static org.testng.AssertJUnit.assertEquals;
 
-@Test
+@Test(groups = "MockitoJUnitRunner")
+/*@TestPropertySource(locations = {"classpath:spring-rest-api-with-jpa-emp-test-local.yml"})
+@ContextConfiguration(initializers = ConfigFileApplicationContextInitializer.class)
+@SpringBootTest*/
 @RunWith(MockitoJUnitRunner.class)
 public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
 
@@ -35,6 +40,7 @@ public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
     private EmployeeServiceImpl employeeService;
 
     private String jsonString;
+    private Logger logger = LoggerFactory.getLogger(EmployeeInfoResourceIT.class);
 
     @Before
     public void before() {
@@ -47,7 +53,7 @@ public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
         }
     }
 
-    @BeforeMethod(alwaysRun=true)
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         MockitoAnnotations.initMocks(this);
     }
@@ -55,24 +61,26 @@ public class TestEmployeeProcessor extends AbstractTestNGSpringContextTests {
     @Test
     public void getEmployeesFromEmployeeInfo() throws Exception {
 
-       JEEmployee jeEmployee1 = new JEEmployee();
-       jeEmployee1.setTitle("Mr.");
-       jeEmployee1.setFirstName("John");
-       jeEmployee1.setMiddleName("Lane");
-       jeEmployee1.setLastName("Doe");
-       jeEmployee1.setDisplayName("Mr.John Doe");
+        JEEmployee jeEmployee1 = new JEEmployee();
+        jeEmployee1.setTitle("Mr.");
+        jeEmployee1.setFirstName("John");
+        jeEmployee1.setMiddleName("Lane");
+        jeEmployee1.setLastName("Doe");
+        jeEmployee1.setDisplayName("Mr.John Doe");
 
-       JEEmployee jeEmployee2 = new JEEmployee();
-       jeEmployee2.setTitle("Mr.");
-       jeEmployee2.setFirstName("Jane");
-       jeEmployee2.setMiddleName("Lane");
-       jeEmployee2.setLastName("Doe");
-       jeEmployee2.setDisplayName("Mr.John Doe");
+        JEEmployee jeEmployee2 = new JEEmployee();
+        jeEmployee2.setTitle("Mr.");
+        jeEmployee2.setFirstName("Jane");
+        jeEmployee2.setMiddleName("Lane");
+        jeEmployee2.setLastName("Doe");
+        jeEmployee2.setDisplayName("Ms.Jane Doe");
 
-       when(employeeService.get()).thenReturn(Arrays.asList(jeEmployee1,jeEmployee2));
-       List<EmployeeTO> employeeTOS = employeeInfoProcessor.get();
+        when(employeeService.get()).thenReturn(Arrays.asList(jeEmployee1, jeEmployee2));
+        List<EmployeeTO> employeeTOS = employeeInfoProcessor.get();
 
-       assertEquals("Welcome Mr.John Doe",employeeTOS.get(0).getDisplayName());
+        logger.info("employeeTOS:\n {}", employeeTOS.toString());
+        assertEquals("Welcome Ms.Jane Doe", employeeTOS.get(1).getDisplayName());
+        assertEquals("Welcome Mr.John Doe", employeeTOS.get(0).getDisplayName());
 
-   }
+    }
 }

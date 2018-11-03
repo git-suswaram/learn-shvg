@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shvg.frameworks.springboot.basedata.data.DummyEmployeeJSONDataGenerator;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.pojo.EmployeesInfo;
 import com.shvg.frameworks.springboot.restapiwithjpa_emp.web.dummy.DummyBusinessService;
+import com.shvg.frameworks.springboot.restapiwithjpa_emp.web.dummy.DummyEmployeeInfoResource;
 import org.junit.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
 */
-@WebMvcTest(EmployeeInfoResource.class)
+@WebMvcTest(DummyEmployeeInfoResource.class)
 public class TestDummyEmployeeInfoResource extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -93,6 +94,5 @@ public class TestDummyEmployeeInfoResource extends AbstractTestNGSpringContextTe
                         .andExpect(status().isOk())
                         .andExpect(content().json(jsonString))
                         .andReturn();
-        //JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), strict);
     }
 }

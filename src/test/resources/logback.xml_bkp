@@ -9,11 +9,12 @@
 
     <logger name="org.springframework" level="ERROR" />
     <logger name="org.springframework.transaction" level="ERROR" />
+    <logger name="com.shvg" level="INFO" />
 
     <!-- in order to debug some marshalling issues, this needs to be TRACE -->
-    <logger name="org.springframework.web.servlet.mvc" level="WARN" />
+    <logger name="org.springframework.web.servlet.mvc" level="ERROR" />
 
-    <root level="INFO">
+    <root level="ERROR">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>
